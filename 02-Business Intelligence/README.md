@@ -1,6 +1,6 @@
 # 📊 02. Business Intelligence & Dashboarding Portfolio
 
-In questa sezione sono raccolti i progetti di Business Intelligence sviluppati con **Microsoft Power BI** per la trasformazione di dataset complessi ed eterogenei in dashboard interattive, navigabili e data-driven a supporto dei decision-maker aziendali.
+In questa sezione sono raccolti i progetti di Business Intelligence sviluppati con **Microsoft Power BI** e **Tableau** per la trasformazione di dataset complessi ed eterogenei in dashboard interattive, report navigabili e Data Storytelling a supporto delle decisioni strategiche aziendali.
 
 ---
 
@@ -52,6 +52,50 @@ Il report si compone di **5 pagine/sezioni principali** interconnesse tramite pu
 * **Data Modeling:** Modello relazionale a stella, relazioni direzionali, ottimizzazione delle chiavi esterne.
 * **Data Visualization:** Map Visuals, Donut Charts, Clustered Bar Charts, Matrix Tables con KPI.
 * **Interactive Features:** Page Navigation Buttons, Bookmarks, Cross-filtering, Slicers condizionali per città e prodotti.
+
+---
+
+## 🇪🇺 Progetto 2: Ottimizzazione Data-Driven & Marketing Strategy (Superstore Europa)
+
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+
+### 📌 Panoramica del Progetto
+**Superstore Europa** ha avviato un processo di trasformazione data-driven per sostituire la reportistica statica con sistemi dinamici di Business Intelligence. Il progetto risponde a due esigenze chiave della direzione aziendale:
+1. Il **monitoraggio continuo e globale delle operazioni europee** (andamento vendite, profitti per nazione, efficienza delle classi di spedizione).
+2. La definizione di una **strategia di allocazione del budget marketing** basata sull'analisi del potenziale dei prodotti.
+
+🔗 **[Visualizza il Progetto Interattivo su Tableau Public](https://public.tableau.com/views/Progettotableaumaster/Storia1?:language=it-IT&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)**
+
+---
+
+### 💡 Valore Aggiunto Aziendale
+
+1. **Ottimizzazione del Budget Marketing:** Identificazione analitica dei prodotti ad alto margine ma sottovalutati in termini di vendite (da spingere), dei prodotti saturi/a basso margine (da ridurre) e dei prodotti in perdita da eliminare dal catalogo.
+2. **Data Storytelling Strategico (Regola delle 3C):** Presentazione visiva strutturata in formato *Tableau Story* (Contesto, Conflitto, Conclusione) per guidare l'executive board verso decisioni chiare e direttamente applicabili.
+3. **Ottimizzazione Logistica & Geo-Analytics:** Analisi combinata della marginalità per nazione/città e dell'impatto dei costi di spedizione per classe di servizio per ridurre le inefficienze operative.
+
+---
+
+### 🖥️ Architettura della Tableau Story & Dashboard
+
+La soluzione è articolata in una **Tableau Story** e in **Dashboard di monitoraggio operativo**:
+
+* 📊 **Executive Operations Dashboard:** Visualizzazione dinamica del trend delle vendite nel tempo, mappa coropletica del profitto per nazione europea e scomposizione dei volumi per classe di spedizione (Standard, Express, Same Day).
+* 📖 **Tableau Marketing Story (3C Framework):**
+  * **Contesto:** Panoramica generale delle vendite e della profittabilità del mercato europeo.
+  * **Conflitto:** Evidenza delle inefficienze nel catalogo (prodotti ad alta marginalità non valorizzati vs. prodotti ad alta vendita ma in perdita).
+  * **Conclusione & Raccomandazioni:** Piano d'azione per il riallocamento del budget pubblicitario e la razionalizzazione del catalogo.
+* 📍 **Bonus Geo & Logistic Insights:** Mappatura dei profitti per città chiave e analisi di efficienza delle opzioni logistiche.
+
+---
+
+### 🧰 Competenze e Strumenti Tableau Utilizzati
+
+* **Visual Analytics & Storytelling:** Tableau Stories, Tableau Dashboard Layouts, 3C Storytelling Framework.
+* **Calculated Fields & Metrics:** Creazione di campi calcolati per margini %, indici di costo logistico e segmentazione di prodotto.
+* **Interactive Features:** Filtri dinamici cross-sheet, azioni di evidenziazione (Highlight Actions), mappe geografiche e Slicers interattivi.
+* **Cloud Publishing:** Deployment e condivisione su **Tableau Public Cloud**.
 
 ---
 
