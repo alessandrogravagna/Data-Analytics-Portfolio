@@ -1,6 +1,6 @@
 # 📊 01. Excel Analytics Projects Portfolio
 
-In questa sezione sono raccolti i progetti pratici sviluppati su Microsoft Excel per la risoluzione di problemi aziendali reali: dall'ottimizzazione del servizio clienti fino all'analisi delle vendite e al reporting interattivo.
+In questa sezione sono raccolti i 3 progetti pratici sviluppati su Microsoft Excel per la risoluzione di problemi aziendali reali: dall'ottimizzazione del servizio clienti fino all'analisi delle vendite e alla simulazione di scenari tramite modellazione statistica e regressione lineare.
 
 ---
 
@@ -46,9 +46,31 @@ Il modello è organizzato nei seguenti Tab:
 
 ---
 
+## Progetto 3: Simulazione Dati Casuali & Modellazione Statistica (Luggnagg Population Study)
+
+![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+
+### 📌 Panoramica del Progetto
+In un contesto aziendale data-driven, la capacità di **simulare scenari reali e generare dataset sintetici verosimili** è fondamentale per testare modelli predittivi e supportare decisioni strategiche in assenza di dati storici completi. Il progetto simula le caratteristiche demografiche di un campione di 250 individui della popolazione di *Luggnagg*, applicando tecniche di **generazione di distribuzioni normali, campionamento condizionale, analisi di correlazione e regressione lineare**.
+
+### 💡 Valore Aggiunto Aziendale
+1. **Simulazione di Scenari & Risk Management:** Creazione di ambienti simulati sicuri per testare ipotesi di mercato e modelli di machine learning/statistici senza costi di raccolta dati.
+2. **Campionamento e Segmentazione:** Capacità di isolare sotto-campioni specifici per analisi di gruppo e stime parametriche di confidenza.
+3. **Analisi Relazionale e Predittiva:** Valutazione della correlazione tra variabili e costruzione di modelli di regressione lineare per identificare trend e relazioni causa-effetto.
+
+### 🛠️ Architettura e Struttura del Foglio Excel
+Il modello è strutturato su **6 Tab specializzati**:
+* **Parameters:** Interfaccia utente per l'impostazione dei parametri probabilistici di input (Probabilità, Media $\mu$, Deviazione Standard $\sigma$).
+* **Data:** Generazione stocastica dell'età della popolazione (distribuzione normale di 250 individui) e assegnazione casuale a 4 gruppi distinti tramite funzioni casuali.
+* **Sample:** Estrazione dinamica e filtraggio condizionale del sotto-campione di analisi relativo a uno specifico gruppo tramite la funzione `=SE()`.
+* **Statistical Insight:** Calcolo degli indicatori statistici chiave del campione (Deviazione Standard, Valore Atteso, Dimensione Campionaria, Tasso di Confidenza, Intervallo di Confidenza e stima del parametro $p$).
+* **(Un)correlated Variables:** Verifica delle relazioni statistiche ed elaborazione della matrice di correlazione tra l'età e variabili indipendenti (es. numero di gatti posseduti, età del partner).
+* **Linear Regression:** Modellazione di regressione lineare tra l'età ($Y$) e l'ordine di censimento/rank ($X$), completa di scatterplot, equazione della retta di regressione ed stima predittiva per specifici partecipanti.
+
+---
+
 ### 👤 Autore
 **Alessandro Gravagna**  
 *Junior Data Specialist | Data Analytics Portfolio*  
 📍 Monza (MB), Italia
-
-
