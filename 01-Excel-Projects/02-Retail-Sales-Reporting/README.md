@@ -11,7 +11,7 @@ Progettazione di un sistema di Business Intelligence su Microsoft Excel per **Tr
 
 ## 📊 Executive Dashboard Preview
 
-![TrendyShoes Dashboard Preview](./images/trendyshoes_dashboard.png)
+![TrendyShoes Dashboard Preview](../images/trendyshoes_dashboard.png)
 *(Figura 1: Report visivo interattivo con KPI di sintesi, analisi delle vendite per area e filtri temporali)*
 
 ---
