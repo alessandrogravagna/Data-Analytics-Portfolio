@@ -14,7 +14,7 @@ Il report integra le transazioni di vendita del 2014, i dati anagrafici dei punt
 ## 📊 Interactive Dashboard Preview
 
 ![Power BI Dashboard Preview](../images/powerbi_dashboard_preview.png)
-*(Figura 1: Overview della dashboard interattiva con navigazione per segnalibri e mappe territoriali)*
+*(Figura 1: Analisi geografica delle performance di vendita con distribuzione per città, mappa territoriale interattiva e menu di navigazione)*
 
 ---
 
