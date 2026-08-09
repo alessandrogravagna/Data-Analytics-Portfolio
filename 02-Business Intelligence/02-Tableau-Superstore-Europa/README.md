@@ -7,14 +7,14 @@
 ## 📌 Panoramica del Progetto
 Progetto di Business Intelligence e Data Storytelling sviluppato su **Tableau** per **Superstore Europa**. La soluzione risponde alla necessità di sostituire la reportistica statica con sistemi dinamici per monitorare le operazioni europee e definire una **strategia data-driven di riallocazione del budget marketing** basata sul reale potenziale e margine dei prodotti.
 
-🔗 **[Clicca qui per esplorare il Progetto Interattivo su Tableau Public](INSERISCI_QUI_IL_TUO_LINK_TABLEAU_PUBLIC)**
+🔗 **[Clicca qui per esplorare il Progetto Interattivo su Tableau Public](https://public.tableau.com/app/profile/alessandro.gravagna/viz/Progettotableaumaster/Storia1)**
 
 ---
 
 ## 📊 Tableau Story Preview
 
 ![Tableau Story Preview](../images/tableau_story_preview.png)
-*(Figura 1: Mappa coropletica dei profitti europei e scomposizione per classe di spedizione)*
+*(Figura 1: Mappa dei profitti europei, analisi delle categorie di prodotto e scomposizione per classe di spedizione)*
 
 ---
 
@@ -27,7 +27,7 @@ Progetto di Business Intelligence e Data Storytelling sviluppato su **Tableau** 
 
 ## 📖 Struttura del Tableau Story (3C Framework)
 1. **Contesto:** Panoramica generale delle vendite e della profittabilità complessiva del mercato europeo.
-2. **Conflitto:** Messa in evidenza delle inefficienze nel catalogo (prodotti ad alta marginalità poco valorizzati vs. prodotti ad alte vendite ma in perdita).
+2. **Conflitto:** Messa in evidenza delle inefficienze nel catalogo (prodotti ad alta marginalità poco valorizzati vs. prodotti ad alta vendita ma in perdita).
 3. **Conclusione & Raccomandazioni:** Piano d'azione strategico per il riallocamento del budget pubblicitario e la razionalizzazione del catalogo.
 
 ---
