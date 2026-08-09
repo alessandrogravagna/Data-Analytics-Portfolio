@@ -24,14 +24,14 @@ L'algoritmo trasforma il database transazionale relazionale della banca in un da
                       │ TRANSAZIONI │───N:1─│ TIPO_TRANSAZIONE│
                       └─────────────┘       └─────────────────┘
 ```
-💡 Valore Aggiunto Aziendale
+## 💡 Valore Aggiunto Aziendale
 Dataset Ready-to-Use per Machine Learning: Trasformazione di un database transazionale complesso in una matrice di feature denormalizzata per modelli predittivi di Churn Reduction, Credit Risk e Fraud Detection.
 
 Segmentazione & Behavioral Analytics: Estrazione di pattern di spesa (volumi uscite/entrate e distribuzione del portafoglio) per campagne di marketing mirate e personalizzate.
 
 Integrità dei Dati & Coerenza Contabile: Architettura basata su LEFT JOIN a cascata e funzioni aggregate condizionali per evitare la perdita di informazioni sui clienti silenti o privi di transazioni.
 
-⚙️ Feature Ingegnerizzate
+##v⚙️ Feature Ingegnerizzate
 Per ciascun id_cliente sono stati calcolati in modo dinamico i seguenti indicatori comportamentali:
 
 Indicatori Demografici: eta_cliente (calcolata in modo dinamico).
@@ -42,7 +42,7 @@ Indicatori di Portafoglio: Conteggio univoco dei conti posseduti e segmentazione
 
 Matrix Features (Pivoting): Scomposizione incrociata di volumi monetari e numero di movimenti per ogni combinazione di conto ed entrata/uscita.
 
-🛠️ Codice SQL e Logica di Implementazione
+## 🛠️ Codice SQL e Logica di Implementazione
 -- Creazione della Tabella/Feature Store Denormalizzato
 CREATE TABLE feature_clienti AS
 SELECT 
@@ -86,7 +86,7 @@ GROUP BY
     c.id_cliente,
     c.data_nascita;
 
-🧰 Competenze Tecniche SQL
+## 🧰 Competenze Tecniche SQL
 DDL & DML Advanced: CREATE TABLE ... AS SELECT per la persistenza dei dati aggregati.
 
 Conditional Aggregation & Pivoting: Utilizzo avanzato di SUM(CASE WHEN ...) e COUNT(DISTINCT ...).
