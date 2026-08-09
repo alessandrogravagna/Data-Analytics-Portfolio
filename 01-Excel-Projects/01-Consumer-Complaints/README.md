@@ -9,8 +9,7 @@ Progetto commissionato da **FinServ Solutions**, società specializzata in soluz
 ---
 
 ## 📊 Dashboard & Visual Preview
-> *Inserisci qui uno screenshot della scheda "Geographical insights" o della dashboard*
-> `![Preview](./images/complaints_dashboard.png)`
+![Geographical Distribution of Complaints](./images/complaints_geographical_insights.png)
 
 ---
 
