@@ -96,6 +96,5 @@ Multi-Table Joins: Relazioni a cascata tramite LEFT JOIN per preservare l'integr
 Date & Math Functions: TIMESTAMPDIFF(), CURRENT_DATE, ROUND().
 
 ## 👤 Autore
-Alessandro Gravagna
-
-Junior Data Analyst | Monza (MB), Italia
+**Alessandro Gravagna**  
+*Junior Data Analyst* | Monza (MB), Italia
