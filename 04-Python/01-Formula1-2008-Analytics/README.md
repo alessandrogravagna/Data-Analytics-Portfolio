@@ -94,7 +94,6 @@ Assicurati che il dataset formula1_data.csv si trovi nella stessa directory del 
 
 Esegui le celle in sequenza per avviare l'analisi interattiva.
 
-# 👤 Autore
-Alessandro Gravagna
-
-Junior Data Analyst | Monza (MB), Italia
+## 👤 Autore
+**Alessandro Gravagna**  
+*Junior Data Analyst* | Monza (MB), Italia
