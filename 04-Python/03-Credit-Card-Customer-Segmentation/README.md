@@ -82,15 +82,24 @@ df['Cluster'] = clusters
 pca = PCA(n_components=2)
 pca_data = pca.fit_transform(df_scaled)
 ```
-## 🧰 Competenze Tecniche Utilizzate
-Unsupervised Machine Learning: K-Means Clustering, Elbow Method, Silhouette Score.
-Dimensionality Reduction: Principal Component Analysis (PCA) per proiezioni vettoriali 2D.
-Data Preprocessing & Cleaning: Imputazione della mediana, Log Transformation ($\log(1+x)$) per correzione della skewness, Feature Scaling (StandardScaler).
-Exploratory Data Analysis: Istogrammi distributivi, Heatmap di correlazione con Seaborn/Matplotlib.
+## 🧰 Competenze Tecniche Utilizzate
+
+* **Unsupervised Machine Learning:** K-Means Clustering, Elbow Method, Silhouette Score.
+* **Dimensionality Reduction:** Principal Component Analysis (PCA) per proiezioni vettoriali 2D.
+* **Data Preprocessing & Cleaning:** Imputazione della mediana, Log Transformation ($\log(1+x)$) per correzione della skewness, Feature Scaling (`StandardScaler`).
+* **Exploratory Data Analysis:** Istogrammi distributivi, Heatmap di correlazione con Seaborn/Matplotlib.
+
+---
+
 ## 🚀 Come Eseguire il Progetto
-Scarica la cartella 03-Credit-Card-Customer-Segmentation.
-Apri il notebook Credit_Card_Customer_Segmentation.ipynb su Google Colab o Jupyter Notebook.
-Esegui le celle per riprodurre le analisi di EDA, la validazione di Silhouette/Elbow e la profilazione dei cluster.
-##👤 Autore
-##Alessandro Gravagna##
-Junior Data Analyst | Monza (MB), Italia
+
+1. Clona la repository o scarica la cartella del progetto.
+2. Apri il notebook `Credit_Card_Customer_Segmentation.ipynb` su **Google Colab** o **Jupyter Notebook**.
+3. Esegui le celle per riprodurre le analisi di EDA, la validazione di Silhouette/Elbow e la profilazione dei cluster.
+
+---
+
+## 👤 Autore
+
+**Alessandro Gravagna**  
+*Junior Data Analyst* | Monza (MB), Italia
