@@ -7,27 +7,30 @@
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 📌 Panoramica del Progetto
-Progetto sviluppato per la **International Alliance for Safe Skies (IASS)** dedicato all'analisi storica, temporale e geospaziale degli incidenti aerei registrati a livello globale tra il **1919 e il 2023**. 
-L'analisi elabora un dataset di **23.967 record** applicando pipeline di **Data Wrangling**, **Feature Engineering** e **Geo-Analytics** per isolare pattern di rischio, valutare la sicurezza degli operatori commerciali/militari e tracciare la curva di sicurezza aeronavale prima e dopo l'11 Settembre 2001.
+Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, come capstone del modulo su Pandas e Data Visualization. Lo scenario di business — un'organizzazione internazionale per la sicurezza aerea — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.
+
+L'analisi elabora un dataset di **23.967 record** di incidenti aerei registrati a livello globale tra il 1919 e il 2023, applicando pipeline di data wrangling, feature engineering e geo-analytics per isolare pattern di rischio, valutare la sicurezza degli operatori commerciali/militari e tracciare la curva di sicurezza aeronavale prima e dopo l'11 settembre 2001.
+
+**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso)
 
 ---
 
-## 💡 Valore Aggiunto Aziendale
-* **Data Cleaning Avanzato di Dati Storici:** Trattamento dinamico di stringhe complesse nella colonna `fatalities` tramite parsing condizionale (`eval()`), estrazione regex degli anni e normalizzazione dei valori mancanti/ignoti.
-* **Indice di Sicurezza Operatori (Safety Index):** Normalizzazione del rapporto di mortalità per singolo incidente (`morti_per_incidente`) applicata a vettori con un campione statisticamente significativo ($\ge 20$ incidenti).
-* **Analisi Temporale & Milestone 9/11:** Monitoraggio del trend annuale degli incidenti nel periodo 1990–2023 con evidenza visiva dell'impatto delle rigide normative di sicurezza introdotte dopo il 2001.
-* **Choropleth Geo-Analytics:** Mappatura geospaziale interattiva mediante Plotly Express con allineamento ISO dei nomi geografici (es. *Russian Federation*, *United States*, *D.R. Congo*).
+## 💡 Cosa dimostra questo progetto
+* **Data cleaning avanzato di dati storici:** trattamento dinamico di stringhe complesse nella colonna `fatalities` tramite parsing condizionale, estrazione regex degli anni e normalizzazione dei valori mancanti/ignoti.
+* **Indice di sicurezza operatori (Safety Index):** normalizzazione del rapporto di mortalità per singolo incidente, applicata a operatori con un campione statisticamente significativo (almeno 20 incidenti).
+* **Analisi temporale & milestone 9/11:** monitoraggio del trend annuale degli incidenti nel periodo 1990–2023 con evidenza visiva dell'impatto delle normative di sicurezza introdotte dopo il 2001.
+* **Choropleth geo-analytics:** mappatura geospaziale interattiva mediante Plotly Express con allineamento ISO dei nomi geografici (es. Russian Federation, United States, D.R. Congo).
 
 ---
 
 ## 📊 Insight e Risultati Chiave dell'Analisi
 
-* **Geografia del Rischio:** Gli **Stati Uniti** e la **Russia** guidano la classifica globale per volume assoluto di incidenti storici, riflettendo la massiccia densità di traffico aereo e flotte operative gestite nell'ultimo secolo[cite: 3].
-* **Distribuzione Settimanale:** Il giorno della settimana con il maggior numero di incidenti registrati è il **Venerdì** (3.563 eventi), seguito dal **Giovedì** (3.382), mentre la **Domenica** risulta il giorno più tranquillo (2.656)[cite: 3].
-* **Operatori Più Sicuri ($\ge 20$ incidenti):** 
-  1. **Southwest Airlines:** $0.0769$ morti/incidente (26 incidenti, 2 decessi)[cite: 3].
-  2. **ZUA:** $0.1250$ morti/incidente (32 incidenti, 4 decessi)[cite: 3].
-* **Velivoli a Maggiore Impatto:** Il **Douglas C-47A (DC-3)** figura come il velivolo con il maggior numero cumulativo di fatalità storiche (**5.770 decessi**), seguito dalle varianti *Douglas C-47* (2.636) e *Douglas C-47B* (1.992)[cite: 3].
+* **Geografia del rischio:** Stati Uniti e Russia guidano la classifica globale per volume assoluto di incidenti storici, riflettendo la densità di traffico aereo e flotte operative gestite nell'ultimo secolo.
+* **Distribuzione settimanale:** il giorno con più incidenti registrati è il venerdì (3.563 eventi), seguito dal giovedì (3.382), mentre la domenica risulta il giorno più tranquillo (2.656).
+* **Operatori più sicuri (almeno 20 incidenti):**
+  1. Southwest Airlines: 0,0769 morti/incidente (26 incidenti, 2 decessi).
+  2. ZUA: 0,1250 morti/incidente (32 incidenti, 4 decessi).
+* **Velivoli a maggiore impatto:** il Douglas C-47A (DC-3) è il velivolo con il maggior numero cumulativo di fatalità storiche (5.770 decessi), seguito dalle varianti Douglas C-47 (2.636) e Douglas C-47B (1.992).
 
 ---
 
@@ -88,23 +91,24 @@ fig = px.choropleth(
     color_continuous_scale="Reds"
 )
 ```
+
+---
+
 ## 🧰 Competenze Tecniche Utilizzate
-Data Cleansing & Wrangling: Uso della libreria Pandas per la manipolazione di tipi dato eterogenei, valutazioni condizionali dinamiche (eval()) ed estrazioni con espressioni regolari (Regex)[cite: 3].
+- **Data Cleansing & Wrangling:** uso di Pandas per la manipolazione di tipi dato eterogenei, valutazioni condizionali dinamiche (`eval()`) ed estrazioni con espressioni regolari.
+- **Statistical Analysis & Filtering:** aggregazioni di gruppo, calcolo di indici di mortalità ponderati e filtri su campioni statisticamente significativi.
+- **Data Visualization:** bar chart con gradienti cromatici personalizzati in Matplotlib e mappe coropletiche geografiche interattive con Plotly Express.
 
-Statistical Analysis & Filtering: Aggregazioni di gruppo, calcolo di indici di mortalità ponderati e filtri su campioni statisticamente significativi[cite: 3].
-
-Data Visualization: Creazione di bar chart con gradienti cromatici personalizzati (Greens/Reds) in Matplotlib e mappe coropletiche geografiche interattive con Plotly Express[cite: 3].
+---
 
 ## 🚀 Come Eseguire il Progetto
-Clona il repository o scarica la cartella 02-Aviation-Accidents-Analytics.
+1. Clona il repository o scarica la cartella `02-Aviation-Accidents-Analytics`.
+2. Apri il notebook `Incidenti_aerei.ipynb` su Google Colab o Jupyter Notebook.
+3. Assicurati che l'URL del dataset o il file `aviation-accidents.csv` sia raggiungibile.
+4. Esegui le celle per riprodurre le analisi statistiche e la mappa interattiva.
 
-Apri il notebook Incidenti_aerei.ipynb su Google Colab o Jupyter Notebook[cite: 3].
+---
 
-Assicurati che l'URL del dataset o il file aviation-accidents.csv sia raggiungibile[cite: 3].
-
-Esegui le celle per riprodurre le analisi statistiche e la mappa interattiva[cite: 3].
-
-# 👤 Autore
-## Alessandro Gravagna ##
-
-Junior Data Analyst | Monza (MB), Italia
+## 👤 Autore
+**Alessandro Gravagna**
+*Junior Data Analyst* | Monza (MB), Italia
