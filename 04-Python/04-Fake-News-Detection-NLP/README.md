@@ -1,4 +1,4 @@
-# 📰 Fake News Detection & Threat Analysis Engine for US Government
+# 📰 Fake News Detection & Text Classification Engine
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat&logo=python&logoColor=white)
 ![NLP](https://img.shields.io/badge/NLP-TF--IDF_%26_Text_Processing-green?style=flat)
@@ -6,51 +6,47 @@
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 📌 Panoramica del Progetto
-Progetto sviluppato per una divisione speciale del **Governo degli Stati Uniti** focalizzata sulla prevenzione e mitigazione della disinformazione digitale. L'obiettivo strategico è realizzare un motore di **Natural Language Processing (NLP)** e **Machine Learning** in grado di classificare in tempo reale se un articolo di notizia è reale o falso (*Fake vs True News*).
+Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, come capstone del modulo su Natural Language Processing. Lo scenario di business — un motore di classificazione integrabile in un'estensione browser — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.
 
-Il modello finale è stato ottimizzato e serializzato in formato `.pkl` per consentirne l'integrazione immediata da parte del team dev all'interno di un'**estensione browser per Google Chrome**, fornendo agli utenti un feedback istantaneo sulla veridicità delle notizie lette online.
+L'obiettivo è realizzare un modello di NLP e Machine Learning in grado di classificare se un articolo di notizia è reale o falso (fake vs true news), a partire dal titolo. Il modello finale è stato serializzato in formato `.pkl` per un ipotetico utilizzo in un'estensione browser che dia un feedback immediato sull'affidabilità della fonte.
+
+**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso) — 21.417 articoli veri, 23.481 articoli fake
 
 ---
 
-## 💡 Valore Aggiunto Aziendale e Sociale
-* **Riduzione della Disinformazione:** Identificazione tempestiva di articoli inaffidabili e protezione degli utenti da contenuti ingannevoli.
-* **Supporto Decisionale ed Istituzionale:** Analisi dei trend e identificazione prioritaria dei temi maggiormente soggetti a manipolazione informativa (es. politica e notizie governative).
-* **Integrazione MLOps End-to-End:** Esportazione dell'intera pipeline (`TF-IDF + Logistic Regression`) tramite serializzazione `pickle` pronta per il deployment in ambiente produzione/web extension.
+## 💡 Cosa dimostra questo progetto
+* **Riconoscimento di pattern stilistici legati alla disinformazione**, non solo classificazione a scatola chiusa.
+* **Feature engineering ibrido**, combinando testo e metriche numeriche strutturali.
+* **Pipeline riproducibile ed esportabile**, dal training alla serializzazione del modello.
 
 ---
 
 ## ⚙️ Pipeline NLP e Metodologia di Modellazione
 
 1. **Analisi Esplorativa dei Dati (EDA):**
-   * Unione dei dataset ufficiali *True* (21.417 articoli) e *Fake* (23.481 articoli) con bilanciamento del target (`is_fake`: 0 per vere, 1 per fake).
-   * Analisi delle distribuzioni per categoria (`subject`) per individuare quali temi sono più esposti alla disinformazione.
-   * Feature Extraction dai titoli (*Title Length*, *Uppercase Letter Count*, *Exclamation Marks*).
+   - Unione dei dataset True e Fake con bilanciamento del target (`is_fake`: 0 per vere, 1 per fake).
+   - Analisi delle distribuzioni per categoria (`subject`) per individuare quali temi sono più esposti alla disinformazione.
+   - Feature extraction dai titoli (lunghezza, conteggio lettere maiuscole, punti esclamativi).
 2. **Preprocessing e Pulizia del Testo:**
-   * Normalizzazione in minuscolo e rimozione della punteggiatura/caratteri speciali tramite espressioni regolari (`re`).
-   * Eliminazione delle Stopwords inglesi tramite la libreria `nltk` per ridurre il rumore semantico.
+   - Normalizzazione in minuscolo e rimozione della punteggiatura/caratteri speciali tramite espressioni regolari.
+   - Eliminazione delle stopwords inglesi tramite la libreria `nltk`.
 3. **Feature Engineering Ibrido (Testo + Struttura):**
-   * Vettorizzazione del testo dei titoli tramite **TF-IDF Vectorizer** (limitato a 5.000 unigrammi/bigrammi più rilevanti).
-   * Combinazione della matrice sparsa TF-IDF con le metriche numeriche strutturali dei titoli tramite `scipy.sparse.hstack`.
+   - Vettorizzazione del testo dei titoli tramite TF-IDF Vectorizer (limitato a 5.000 unigrammi/bigrammi più rilevanti).
+   - Combinazione della matrice sparsa TF-IDF con le metriche numeriche strutturali dei titoli tramite `scipy.sparse.hstack`.
 4. **Modellazione e Validazione:**
-   * Divisione del dataset in Training Set (80%) e Test Set (20%) stratificato.
-   * Addestramento del classificatore di **Regressione Logistica** (`LogisticRegression`).
-   * Valutazione delle performance sul test set mediante **Accuracy, Precision, Recall, F1-Score** e **Matrice di Confusione**.
-5. **Esportazione per il Plug-in Chrome:**
-   * Serializzazione del modello addestrato e del vettorizzatore TF-IDF in file `.pkl`.
+   - Divisione del dataset in training set (80%) e test set (20%) stratificato.
+   - Addestramento di un classificatore di Regressione Logistica.
+   - Valutazione delle performance tramite accuracy, precision, recall, F1-score e matrice di confusione.
+5. **Esportazione del Modello:**
+   - Serializzazione del modello addestrato e del vettorizzatore TF-IDF in file `.pkl`.
 
 ---
 
 ## 📊 Key Insights e Risultati Analitici
 
-* **Pattern Stilistici dei Titoli (Clickbait):**
-  * I titoli delle **Fake News** sono sensibilmente più lunghi (media di **94.2 caratteri** contro i **64.7** delle notizie vere).
-  * Le Fake News mostrano un uso massiccio di maiuscole nel titolo (media di **27.8 lettere maiuscole** contro **3.55**) e una frequenza nettamente superiore di punti esclamativi.
-* **Analisi dei Temi:**
-  * I temi maggiormente soggetti a Fake News risultano essere *News Generali*, *Politica* e *Left News*.
-  * Le categorie *politicsNews* e *worldnews* contengono esclusivamente notizie verificate.
-* **Performance del Modello:**
-  * **Accuracy Globale:** **99%** sul test set di 8.980 articoli.
-  * **Precision & Recall:** 0.99 sia per la classe Notizie Vere che per le Fake News, riducendo al minimo il rischio di falsi positivi (falsa censura).
+* **Pattern stilistici dei titoli (clickbait):** i titoli delle fake news sono sensibilmente più lunghi (media di 94,2 caratteri contro 64,7 delle notizie vere) e mostrano un uso massiccio di maiuscole (27,8 lettere maiuscole medie contro 3,55) e più punti esclamativi.
+* **Analisi dei temi:** i temi maggiormente soggetti a fake news risultano essere News Generali, Politica e Left News. Le categorie politicsNews e worldnews contengono esclusivamente notizie verificate.
+* **Performance del modello:** accuracy globale del 99% sul test set di 8.980 articoli, con precision e recall di 0,99 per entrambe le classi.
 
 ---
 
@@ -84,43 +80,33 @@ modello.fit(X_train, y_train)
 y_pred = modello.predict(X_test)
 print(classification_report(y_test, y_pred))
 
-# 6. Esportazione Modello e Vettorizzatore per Plug-in Chrome
+# 6. Esportazione Modello e Vettorizzatore
 with open('fake_news_model.pkl', 'wb') as f:
     pickle.dump(modello, f)
 
 with open('tfidf_vectorizer.pkl', 'wb') as f:
     pickle.dump(tfidf, f)
 ```
-## 🧰 Competenze Tecniche Utilizzate
 
-* **Natural Language Processing (NLP):**
-  * NLTK Stopwords Removal
-  * Regular Expressions (`re`)
-  * TF-IDF Vectorization
-  * Text Cleaning
-* **Feature Engineering:**
-  * Combinazione di matrici sparse PNV (NLP) e variabili dense numeriche tramite SciPy
-* **Supervised Machine Learning:**
-  * Classification con `LogisticRegression`
-  * Train/Test Split con stratificazione
-* **Model Evaluation & MLOps:**
-  * Precision, Recall, F1-Score, Confusion Matrix
-  * Model Serialization con `pickle`
-* **Data Visualization:**
-  * Seaborn Countplots e Cross-Tabulation per l'analisi dei temi e delle metriche stilistiche
+---
+
+## 🧰 Competenze Tecniche Utilizzate
+- **Natural Language Processing:** rimozione stopwords con NLTK, espressioni regolari, TF-IDF vectorization, text cleaning.
+- **Feature Engineering:** combinazione di matrici sparse (NLP) e variabili numeriche dense tramite SciPy.
+- **Supervised Machine Learning:** classificazione con Regressione Logistica, train/test split stratificato.
+- **Model Evaluation:** precision, recall, F1-score, matrice di confusione, serializzazione del modello con pickle.
+- **Data Visualization:** countplot e cross-tabulation con Seaborn per l'analisi dei temi e delle metriche stilistiche.
 
 ---
 
 ## 🚀 Come Eseguire il Progetto
-
 1. Clona la repository o scarica la cartella `04-Fake-News-Detection-NLP`.
 2. Assicurati di avere installato le librerie necessarie (`pandas`, `scikit-learn`, `nltk`, `seaborn`, `scipy`).
 3. Apri ed esegui il notebook `Fake_News_Detection_NLP.ipynb` su Google Colab o Jupyter Notebook.
-4. I file `fake_news_model.pkl` e `tfidf_vectorizer.pkl` verranno generati nella directory di lavoro, pronti per l'integrazione nell'estensione Chrome.
+4. I file `fake_news_model.pkl` e `tfidf_vectorizer.pkl` verranno generati nella directory di lavoro.
 
 ---
 
 ## 👤 Autore
-
-**Alessandro Gravagna**  
-*Junior Data Analyst | Monza (MB), Italia*
+**Alessandro Gravagna**
+*Junior Data Analyst* | Monza (MB), Italia
