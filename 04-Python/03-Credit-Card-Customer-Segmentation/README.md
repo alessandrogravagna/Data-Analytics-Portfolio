@@ -6,44 +6,45 @@
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 📌 Panoramica del Progetto
-Progetto di Machine Learning Non Supervisionato sviluppato per la società finanziaria **FinTech Solutions S.p.A.** con l'obiettivo di segmentare la base clienti in gruppi comportamentali omogenei basati su saldo residuo, frequenza d'uso, volumi d'acquisto e abitudini di pagamento con carta di credito.
-La soluzione consente all'azienda di ottimizzare il budget pubblicitario, aumentare il tasso di conversione delle campagne e progettare strategie promozionali fortemente personalizzate per ciascun profilo di utente.
+Progetto di Machine Learning non supervisionato realizzato durante il **Master in Data Analytics di ProfessionAI**, come capstone del modulo su Machine Learning. Lo scenario di business — una società finanziaria che vuole segmentare la propria clientela — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.
+
+L'obiettivo è segmentare la base clienti in gruppi comportamentali omogenei basati su saldo residuo, frequenza d'uso, volumi d'acquisto e abitudini di pagamento con carta di credito, per poter progettare strategie promozionali personalizzate per ciascun profilo.
+
+**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso) — circa 9.000 titolari di carta
 
 ---
 
-## 💡 Valore Aggiunto Aziendale
-* **Segmentazione Comportamentale Data-Driven:** Superamento delle tradizionali logiche di segmentazione meramente demografiche tramite l'estrazione di pattern transazionali reali da un campione di circa 9.000 titolari di carta.
-* **Ottimizzazione del ROI di Marketing:** Identificazione dei cluster ad alta redditività (*Big Spenders*) per azioni di fidelizzazione e dei cluster inattivi per campagne promozionali di re-ingaggio.
-* **Personalizzazione dell'Offerta Creditizia:** Progettazione di prodotti mirati per i clienti con alta propensione agli acquisti rateali (`INSTALLMENTS_PURCHASES`) o all'anticipo contanti (`CASH_ADVANCE`).
+## 💡 Cosa dimostra questo progetto
+* **Segmentazione comportamentale data-driven:** superamento delle logiche di segmentazione meramente demografiche tramite l'estrazione di pattern transazionali reali.
+* **Ottimizzazione del budget marketing:** identificazione dei cluster ad alta redditività ("Big Spenders") per azioni di fidelizzazione e dei cluster inattivi per campagne di re-ingaggio.
+* **Personalizzazione dell'offerta creditizia:** individuazione dei clienti con alta propensione agli acquisti rateali o all'anticipo contanti.
 
 ---
 
 ## ⚙️ Pipeline di Machine Learning e Metodologia
 
 1. **Analisi Esplorativa (EDA) & Data Cleaning:**
-   * Ispezione della struttura dei dati e analisi della matrice di correlazione tra le variabili.
-   * Imputazione dei valori mancanti con la mediana per `MINIMUM_PAYMENTS` e `CREDIT_LIMIT` per garantire la massima robustezza agli outlier.
-   * Rimozione dell'identificativo categorico non informativo (`CUST_ID`).
+   - Ispezione della struttura dei dati e analisi della matrice di correlazione tra le variabili.
+   - Imputazione dei valori mancanti con la mediana per `MINIMUM_PAYMENTS` e `CREDIT_LIMIT`.
+   - Rimozione dell'identificativo categorico non informativo (`CUST_ID`).
 2. **Preprocessing & Feature Engineering:**
-   * Applicazione della trasformazione logaritmica $\log(1 + x)$ su tutte le variabili monetarie (`BALANCE`, `PURCHASES`, `CASH_ADVANCE`, `PAYMENTS`, ecc.) per attenuare la forte asimmetria positiva (skewness) e l'impatto dei valori estremi.
-   * Standardizzazione completa delle feature tramite `StandardScaler()` per uniformare la scala operativa prima del calcolo delle distanze euclidee.
+   - Applicazione della trasformazione logaritmica log(1+x) su tutte le variabili monetarie (`BALANCE`, `PURCHASES`, `CASH_ADVANCE`, `PAYMENTS`, ecc.) per attenuare l'asimmetria positiva e l'impatto dei valori estremi.
+   - Standardizzazione delle feature tramite `StandardScaler()` per uniformare la scala prima del calcolo delle distanze euclidee.
 3. **Clustering Non Supervisionato (K-Means):**
-   * Valutazione del numero ottimale di cluster ($k=4$) tramite analisi combinata dell'Inerzia/WCSS (**Elbow Method**) e del **Silhouette Score**.
+   - Valutazione del numero ottimale di cluster (k=4) tramite Elbow Method e Silhouette Score.
 4. **Riduzione Dimensionale & Visualizzazione (PCA):**
-   * Proiezione delle 17 feature su 2 componenti principali (PCA) per l'ispezione visiva 2D e la verifica della separazione spaziale tra i cluster.
+   - Proiezione delle 17 feature su 2 componenti principali per l'ispezione visiva e la verifica della separazione tra i cluster.
 
 ---
 
 ## 📊 Profilazione dei Cluster (Business Personas)
 
-Calcolando il profilo medio di ciascun gruppo sulle variabili originali, sono emersi 4 segmenti di clientela nettamente distinti:
-
 | Cluster | Archetipo | Caratteristiche Finanziarie | Strategia di Marketing Mirata |
 | :--- | :--- | :--- | :--- |
-| **Cluster 0** | **Low Engagement / Inattivi** | Saldo e limite di credito contenuti, frequenza d'acquisto molto bassa, utilizzo sporadico. | **Re-Ingaggio:** Promozioni con bonus cashback o incentivi all'attivazione al raggiungimento di una soglia minima di transazioni. |
-| **Cluster 1** | **Cash Advance Dependent** | Elevato saldo residuo, frequenza e importi d'anticipo contante (`CASH_ADVANCE`) alti. | **Consolidamento Debito:** Proposta di prestiti personali a tassi agevolati per convertire l'anticipo contanti in credito al consumo a minor rischio. |
-| **Cluster 2** | **Big Spenders / VIP** | Elevata capacità di spesa (`PURCHASES`), alto limite di credito e alta percentuale di pagamento completo (`PRC_FULL_PAYMENT`). | **Retention Premium:** Upgrade a carte Gold/Platinum, cashback su acquisti luxury e vantaggi esclusivi. |
-| **Cluster 3** | **Installment Lovers** | Forte prevalenza di acquisti rateali (`INSTALLMENTS_PURCHASES`) ed elevata frequenza transazionale. | **Partnership & Tasso Zero:** Promozioni di finanziamento a tasso zero presso e-commerce ed esercenti convenzionati. |
+| **Cluster 0** | Low Engagement / Inattivi | Saldo e limite di credito contenuti, frequenza d'acquisto molto bassa. | Re-ingaggio con bonus cashback o incentivi all'attivazione. |
+| **Cluster 1** | Cash Advance Dependent | Elevato saldo residuo, frequenza e importi d'anticipo contante alti. | Consolidamento debito: prestiti personali a tassi agevolati. |
+| **Cluster 2** | Big Spenders / VIP | Elevata capacità di spesa, alto limite di credito, alta % di pagamento completo. | Retention premium: upgrade Gold/Platinum, cashback su acquisti luxury. |
+| **Cluster 3** | Installment Lovers | Forte prevalenza di acquisti rateali ed elevata frequenza transazionale. | Partnership a tasso zero con e-commerce ed esercenti convenzionati. |
 
 ---
 
@@ -82,24 +83,24 @@ df['Cluster'] = clusters
 pca = PCA(n_components=2)
 pca_data = pca.fit_transform(df_scaled)
 ```
-## 🧰 Competenze Tecniche Utilizzate
 
-* **Unsupervised Machine Learning:** K-Means Clustering, Elbow Method, Silhouette Score.
-* **Dimensionality Reduction:** Principal Component Analysis (PCA) per proiezioni vettoriali 2D.
-* **Data Preprocessing & Cleaning:** Imputazione della mediana, Log Transformation ($\log(1+x)$) per correzione della skewness, Feature Scaling (`StandardScaler`).
-* **Exploratory Data Analysis:** Istogrammi distributivi, Heatmap di correlazione con Seaborn/Matplotlib.
+---
+
+## 🧰 Competenze Tecniche Utilizzate
+- **Unsupervised Machine Learning:** K-Means Clustering, Elbow Method, Silhouette Score.
+- **Dimensionality Reduction:** Principal Component Analysis (PCA) per proiezioni vettoriali 2D.
+- **Data Preprocessing & Cleaning:** imputazione della mediana, log transformation per correzione della skewness, feature scaling (`StandardScaler`).
+- **Exploratory Data Analysis:** istogrammi distributivi, heatmap di correlazione con Seaborn/Matplotlib.
 
 ---
 
 ## 🚀 Come Eseguire il Progetto
-
 1. Clona la repository o scarica la cartella del progetto.
-2. Apri il notebook `Credit_Card_Customer_Segmentation.ipynb` su **Google Colab** o **Jupyter Notebook**.
+2. Apri il notebook `Credit_Card_Customer_Segmentation.ipynb` su Google Colab o Jupyter Notebook.
 3. Esegui le celle per riprodurre le analisi di EDA, la validazione di Silhouette/Elbow e la profilazione dei cluster.
 
 ---
 
 ## 👤 Autore
-
-**Alessandro Gravagna**  
+**Alessandro Gravagna**
 *Junior Data Analyst* | Monza (MB), Italia
