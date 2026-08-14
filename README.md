@@ -26,10 +26,10 @@ Junior Data Analyst basato a Monza (MB). Arrivo alla data analytics da un percor
 
 | Progetto | Perché guardarlo |
 | :--- | :--- |
-| [Credit Card Customer Segmentation](./04-Python/03-Credit-Card-Customer-Segmentation) | Clustering K-Means con 4 profili cliente distinti e strategie di marketing mirate per ciascuno — la competenza più richiesta nei ruoli junior retail/banking. |
-| [Fake News Detection (NLP)](./04-Python/04-Fake-News-Detection-NLP) | Classificatore con il 99% di accuracy, dalla pulizia del testo alla serializzazione del modello — pipeline NLP completa. |
+| [Behavioral Feature Store](./03-SQL-Project) | Feature engineering bancario in SQL puro, con join a cascata e pivoting condizionale — la base di ogni pipeline ML. |
+| [Credit Card Customer Segmentation](./04-Python/03-Credit-Card-Customer-Segmentation) | Clustering K-Means con 4 profili cliente distinti e strategie di marketing mirate per ciascuno. |
 | [TechMarket Analytics](./02-Business%20Intelligence/01-PowerBI-TechMarket) | Dashboard Power BI con star schema, misure DAX e navigazione a bookmark su 5 aree di analisi. |
-| [Bitcoin Sentiment Analysis](./04-Python/05-Bitcoin-Sentiment-Analysis-PySpark) | Elaborazione distribuita con PySpark su larga scala, con interpretazione critica di una correlazione debole (non forzata). |
+| [Superstore Europa](./02-Business%20Intelligence/02-Tableau-Superstore-Europa) | Data storytelling su Tableau con framework 3C, pubblicato su Tableau Public e navigabile online. |
 
 ---
 
