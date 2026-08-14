@@ -6,48 +6,38 @@
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 📌 Panoramica del Progetto
-Progetto di Big Data Analytics sviluppato per la società di ricerche di mercato **MarketPulse Analytics**. L'obiettivo è stimare il consenso pubblico e il sentiment degli utenti nei confronti del Bitcoin elaborando e analizzando milioni di tweet raccolti nel tempo.
+Progetto di Big Data Analytics realizzato durante il **Master in Data Analytics di ProfessionAI**, come capstone del modulo su Big Data e PySpark. Lo scenario di business — una società di ricerche di mercato che monitora il sentiment sul Bitcoin — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.
 
-Sfruttando la potenza di calcolo distribuito di **PySpark** su architettura Cloud (Google Colab), la pipeline pulisce il testo, filtra la lingua inglese tramite Pandas UDF, classifica il sentiment giornaliero (positivo, negativo, neutro) tramite TextBlob, misura le metriche di engagement degli utenti (*likes* e *replies*) ed esplora la correlazione con lo storico dei prezzi di mercato del Bitcoin (BTC/USD).
+L'obiettivo è stimare il consenso pubblico e il sentiment degli utenti nei confronti del Bitcoin elaborando milioni di tweet raccolti nel tempo, sfruttando la potenza di calcolo distribuito di PySpark su Google Colab. La pipeline pulisce il testo, filtra la lingua inglese, classifica il sentiment giornaliero (positivo, negativo, neutro) tramite TextBlob, misura le metriche di engagement degli utenti (likes e replies) ed esplora la correlazione con lo storico dei prezzi di mercato del Bitcoin (BTC/USD).
+
+**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso)
 
 ---
 
-## 💡 Valore Aggiunto Aziendale
-* **Monitoraggio del Consenso in Tempo Reale:** Tracciamento della percezione pubblica sul Bitcoin per guidare le scelte di investitori e professionisti finanziari.
-* **Engagement Behavior Analysis:** Comprensione delle dinamiche social, valutando se i messaggi con tono negativo generano maggiore attenzione (*likes*) o discussioni più accese (*replies*).
-* **Correlation Insights:** Analisi empirica della relazione tra la frequenza dei tweet (positivi/negativi) e le quotazioni di chiusura di BTC/USD per individuare eventuali pattern di mercato.
+## 💡 Cosa dimostra questo progetto
+* **Elaborazione distribuita su larga scala**, non solo su un singolo notebook Pandas.
+* **Sentiment analysis vettorizzata** con Pandas UDF per performance su grandi volumi.
+* **Analisi critica dei risultati**: il progetto non si limita a mostrare correlazioni, ma le interpreta correttamente quando risultano deboli o assenti.
 
 ---
 
 ## ⚙️ Pipeline Big Data & Metodologia
 
-1. **Configurazione dell'Ambiente PySpark:**
-   * Inizializzazione di una `SparkSession` ottimizzata con l'attivazione di **Apache Arrow** (`spark.execution.arrow.pyspark.enabled`) e tuning delle partizioni di shuffle.
-2. **Data Ingestion & Data Cleaning:**
-   * Download e lettura di due dataset: tweet su Bitcoin e storico prezzi BTC/USD.
-   * Filtro sui timestamp validi, cast dei campi numerici e pulizia avanzata del testo con Regex (rimozione URL, entità HTML e caratteri speciali).
-   * Rilevamento della lingua tramite **Pandas UDF** (`langdetect`) per mantenere solo i tweet in inglese, memorizzando il risultato in cache RAM.
-3. **Sentiment Analysis con TextBlob:**
-   * Applicazione vettorizzata di **TextBlob** tramite Pandas UDF per la polarità del testo, classificando ogni tweet come `positivo` (polarità > 0), `negativo` (polarità < 0) o `neutro` (polarità = 0).
-4. **Analisi dell'Engagement (Likes vs Replies):**
-   * Calcolo della media delle interazioni (`likes_num` e `replies_num`) filtrate per ogni categoria di sentiment.
-5. **Join Temporale & Calcolo della Correlazione:**
-   * Aggregazione giornaliera (*Pivot*) dei volumi di tweet per ciascun sentiment.
-   * Inner Join con lo storico prezzi del Bitcoin basato sulla data (`data_pulita`).
-   * Calcolo dell'indice di correlazione di Pearson tra tweet positivi/negativi e il prezzo di chiusura (*Close*).
-6. **Data Visualization:**
-   * Generazione di grafici temporali a linee con Seaborn e Matplotlib (trend storico globale su scala logaritmica e focus lineare sul 2019).
+1. **Configurazione dell'Ambiente PySpark:** inizializzazione di una SparkSession con Apache Arrow attivato e tuning delle partizioni di shuffle.
+2. **Data Ingestion & Data Cleaning:** lettura di due dataset (tweet su Bitcoin e storico prezzi BTC/USD), filtro sui timestamp validi, cast dei campi numerici e pulizia del testo con regex (rimozione URL, entità HTML, caratteri speciali).
+3. **Rilevamento della lingua** tramite Pandas UDF (`langdetect`) per mantenere solo i tweet in inglese.
+4. **Sentiment Analysis con TextBlob:** applicazione vettorizzata tramite Pandas UDF per la polarità del testo, classificando ogni tweet come positivo, negativo o neutro.
+5. **Analisi dell'Engagement:** calcolo della media di likes e replies per ogni categoria di sentiment.
+6. **Join Temporale & Correlazione:** aggregazione giornaliera dei volumi di tweet per sentiment, join con lo storico prezzi Bitcoin, calcolo della correlazione di Pearson tra tweet positivi/negativi e prezzo di chiusura.
+7. **Data Visualization:** grafici temporali con Seaborn e Matplotlib (scala logaritmica sul trend storico, focus lineare sul 2019).
 
 ---
 
 ## 📊 Risultati ed Insight Principali
 
-* **Engagement sui Social Media:**
-  * **Likes:** I tweet con sentiment **negativo** ricevono una media di like leggermente superiore (**8.62**) rispetto a quelli positivi (**8.28**) e neutri (**7.85**).
-  * **Replies (Discussioni):** I tweet **positivi** generano in media più risposte (**1.11**) rispetto a quelli negativi (**0.91**), dimostrando che i messaggi positivi stimolano maggiormente l'interazione diretta e il dibattito.
-* **Correlazione tra Sentiment e Prezzo BTC/USD:**
-  * Il calcolo dell'indice di correlazione di Pearson tra i tweet giornalieri e il prezzo di chiusura del Bitcoin restituisce un valore prossimo a zero (~**0.01** sia per i tweet positivi che per i negativi).
-  * **Conclusione:** Non emerge una correlazione lineare diretta tra il volume giornaliero di tweet e il prezzo del Bitcoin. Le variazioni di prezzo sono guidate da dinamiche macroeconomiche e finanziarie più complesse rispetto al solo volume di post sui social.
+* **Engagement sui social media:** i tweet con sentiment negativo ricevono in media più like (8,62) rispetto a quelli positivi (8,28) e neutri (7,85). I tweet positivi generano invece più risposte in media (1,11) rispetto ai negativi (0,91), a indicare che i messaggi positivi stimolano più interazione diretta.
+* **Correlazione tra sentiment e prezzo BTC/USD:** l'indice di correlazione di Pearson tra i tweet giornalieri e il prezzo di chiusura del Bitcoin risulta prossimo a zero (circa 0,01 sia per i tweet positivi che per i negativi).
+* **Conclusione:** non emerge una correlazione lineare diretta tra il volume giornaliero di tweet e il prezzo del Bitcoin. Le variazioni di prezzo sono guidate da dinamiche macroeconomiche e finanziarie più complesse rispetto al solo volume di post sui social.
 
 ---
 
@@ -62,7 +52,7 @@ from textblob import TextBlob
 
 # 1. Inizializzazione Sessione PySpark
 spark = SparkSession.builder \
-    .appName("MarketPulse_Bitcoin_Sentiment") \
+    .appName("Bitcoin_Sentiment_Analysis") \
     .config("spark.execution.arrow.pyspark.enabled", "true") \
     .getOrCreate()
 
@@ -88,30 +78,20 @@ df_engagement.show()
 corr_positivi = df_output_correlazione.stat.corr("tweet_positivi", "Close")
 corr_negativi = df_output_correlazione.stat.corr("tweet_negativi", "Close")
 ```
-## 🧰 Competenze Tecniche Utilizzate
 
-* **Big Data Processing:**
-  * PySpark SQL & PySpark DataFrames
-  * Apache Arrow Integration & Spark Caching
-  * Distributed Execution su Google Colab
-* **Natural Language Processing (NLP) & Feature Engineering:**
-  * Text Cleaning con Regex
-  * Language Detection con `langdetect`
-  * Sentiment Analysis & Polarity Scoring con `TextBlob`
-* **High-Performance Execution:**
-  * Optimised Pandas UDFs (`pyspark.sql.functions.pandas_udf`) per elaborazioni vettorizzate veloci
-* **Data Integration & Statistical Analysis:**
-  * Reshaping temporale (Pivot)
-  * Inner Join di dataset eterogenei (Tweet Data + BTC/USD Financial Price Data)
-  * Calcolo della Correlazione di Pearson (`stat.corr`)
-* **Data Visualization:**
-  * Matplotlib e Seaborn per la creazione di subplot temporali (scala logaritmica e lineare)
+---
+
+## 🧰 Competenze Tecniche Utilizzate
+- **Big Data Processing:** PySpark SQL & DataFrames, integrazione Apache Arrow, caching, esecuzione distribuita su Google Colab.
+- **Natural Language Processing & Feature Engineering:** text cleaning con regex, language detection con `langdetect`, sentiment analysis con TextBlob.
+- **High-Performance Execution:** Pandas UDF ottimizzate per elaborazioni vettorizzate.
+- **Data Integration & Statistical Analysis:** pivot temporale, join di dataset eterogenei, correlazione di Pearson.
+- **Data Visualization:** Matplotlib e Seaborn per subplot temporali (scala logaritmica e lineare).
 
 ---
 
 ## 🚀 Come Eseguire il Progetto
-
-1. Apri **Google Colab** e carica il notebook `Bitcoin_Sentiment_Analysis_PySpark.ipynb`.
+1. Apri Google Colab e carica il notebook `Bitcoin_Sentiment_Analysis_PySpark.ipynb`.
 2. Esegui la prima cella per installare le dipendenze Big Data (`pyspark`, `langdetect`, `pyarrow`).
 3. Esegui le celle in sequenza: il codice scaricherà automaticamente i dataset dei tweet e dello storico prezzi BTC/USD.
 4. Consulta i dataframe aggregati, la tabella di engagement e i grafici temporali del sentiment generati.
@@ -119,6 +99,5 @@ corr_negativi = df_output_correlazione.stat.corr("tweet_negativi", "Close")
 ---
 
 ## 👤 Autore
-
-**Alessandro Gravagna**  
-*Junior Data Analyst | Monza (MB), Italia*
+**Alessandro Gravagna**
+*Junior Data Analyst* | Monza (MB), Italia
