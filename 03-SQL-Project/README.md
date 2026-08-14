@@ -1,19 +1,22 @@
 # 🗄️ Behavioral Feature Store for Predictive Banking Analytics
 
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
-![SQL Engineering](https://img.shields.io/badge/SQL-Feature_Engineering-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-Engineering-blue)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 📌 Panoramica del Progetto
-Progettazione e implementazione in SQL di un **Behavioral Feature Store denormalizzato** (`feature_clienti`) per l'istituto finanziario *Banking Intelligence*. 
-L'algoritmo trasforma il database transazionale relazionale della banca in un dataset analitico a riga singola per cliente (riferito univocamente all'ID cliente), pronto per alimentare modelli di **Machine Learning supervisionato** (predizione del *Churn Rate*, propensione d'acquisto e rilevamento anomalie).
+Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, come capstone del modulo su SQL avanzato. Lo scenario di business — un istituto finanziario che vuole predire il churn dei clienti — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.
+
+L'obiettivo è la progettazione e implementazione in SQL di un **Behavioral Feature Store** denormalizzato (`feature_clienti`), che trasforma il database transazionale relazionale della banca in un dataset analitico a riga singola per cliente, pronto per alimentare modelli di Machine Learning supervisionato (predizione del churn rate, propensione d'acquisto, rilevamento anomalie).
+
+**Dataset:** TODO-inserisci-fonte-dataset (es. materiale del corso)
 
 ---
 
 ## 🏛️ Architettura del Database Relazionale (Schema ER)
 
-```text
+```
 ┌─────────────┐       ┌─────────────┐       ┌─────────────────┐
 │   CLIENTE   │───1:N─│    CONTO    │───N:1─│   TIPO_CONTO    │
 └─────────────┘       └─────────────┘       └─────────────────┘
@@ -24,30 +27,35 @@ L'algoritmo trasforma il database transazionale relazionale della banca in un da
                       │ TRANSAZIONI │───N:1─│ TIPO_TRANSAZIONE│
                       └─────────────┘       └─────────────────┘
 ```
-## 💡 Valore Aggiunto Aziendale
-Dataset Ready-to-Use per Machine Learning: Trasformazione di un database transazionale complesso in una matrice di feature denormalizzata per modelli predittivi di Churn Reduction, Credit Risk e Fraud Detection.
 
-Segmentazione & Behavioral Analytics: Estrazione di pattern di spesa (volumi uscite/entrate e distribuzione del portafoglio) per campagne di marketing mirate e personalizzate.
+---
 
-Integrità dei Dati & Coerenza Contabile: Architettura basata su LEFT JOIN a cascata e funzioni aggregate condizionali per evitare la perdita di informazioni sui clienti silenti o privi di transazioni.
+## 💡 Cosa dimostra questo progetto
+* **Dataset ready-to-use per Machine Learning:** trasformazione di un database transazionale complesso in una matrice di feature denormalizzata, utilizzabile per modelli predittivi di churn reduction, credit risk e fraud detection.
+* **Segmentazione & behavioral analytics:** estrazione di pattern di spesa (volumi uscite/entrate e distribuzione del portafoglio) utili per campagne di marketing mirate.
+* **Integrità dei dati & coerenza contabile:** architettura basata su LEFT JOIN a cascata e funzioni aggregate condizionali per evitare la perdita di informazioni sui clienti silenti o privi di transazioni.
 
-##v⚙️ Feature Ingegnerizzate
-Per ciascun id_cliente sono stati calcolati in modo dinamico i seguenti indicatori comportamentali:
+---
 
-Indicatori Demografici: eta_cliente (calcolata in modo dinamico).
+## ⚙️ Feature Ingegnerizzate
 
-Indicatori Transazionali Totali: Volume e frequenza di transazioni in entrata (+) e in uscita (-).
+Per ciascun `id_cliente` sono stati calcolati in modo dinamico i seguenti indicatori comportamentali:
 
-Indicatori di Portafoglio: Conteggio univoco dei conti posseduti e segmentazione per categoria (Base, Business, Privati, Famiglie).
+- **Indicatori demografici:** `eta_cliente` (calcolata dinamicamente).
+- **Indicatori transazionali totali:** volume e frequenza di transazioni in entrata (+) e in uscita (-).
+- **Indicatori di portafoglio:** conteggio univoco dei conti posseduti e segmentazione per categoria (Base, Business, Privati, Famiglie).
+- **Matrix features (pivoting):** scomposizione incrociata di volumi monetari e numero di movimenti per ogni combinazione di conto ed entrata/uscita.
 
-Matrix Features (Pivoting): Scomposizione incrociata di volumi monetari e numero di movimenti per ogni combinazione di conto ed entrata/uscita.
+---
 
 ## 🛠️ Codice SQL e Logica di Implementazione
+
+```sql
 -- Creazione della Tabella/Feature Store Denormalizzato
 CREATE TABLE feature_clienti AS
-SELECT 
+SELECT
     c.id_cliente,
-    
+
     -- Feature Demografica
     TIMESTAMPDIFF(YEAR, c.data_nascita, CURRENT_DATE) AS eta_cliente,
 
@@ -74,27 +82,23 @@ SELECT
     ROUND(SUM(CASE WHEN tc.desc_tipo_conto = 'Conto Famiglie' AND tt.segno = '+' THEN t.importo ELSE 0 END), 2) AS importo_entrata_famiglie
 
 FROM cliente c
-LEFT JOIN conto co 
-    ON c.id_cliente = co.id_cliente
-LEFT JOIN tipo_conto tc 
-    ON co.id_tipo_conto = tc.id_tipo_conto
-LEFT JOIN transazioni t 
-    ON co.id_conto = t.id_conto
-LEFT JOIN tipo_transazione tt 
-    ON t.id_tipo_trans = tt.id_tipo_transazione
-GROUP BY 
-    c.id_cliente,
-    c.data_nascita;
+LEFT JOIN conto co ON c.id_cliente = co.id_cliente
+LEFT JOIN tipo_conto tc ON co.id_tipo_conto = tc.id_tipo_conto
+LEFT JOIN transazioni t ON co.id_conto = t.id_conto
+LEFT JOIN tipo_transazione tt ON t.id_tipo_trans = tt.id_tipo_transazione
+GROUP BY c.id_cliente, c.data_nascita;
+```
+
+---
 
 ## 🧰 Competenze Tecniche SQL
-DDL & DML Advanced: CREATE TABLE ... AS SELECT per la persistenza dei dati aggregati.
+- **DDL & DML Advanced:** `CREATE TABLE ... AS SELECT` per la persistenza dei dati aggregati.
+- **Conditional Aggregation & Pivoting:** utilizzo avanzato di `SUM(CASE WHEN ...)` e `COUNT(DISTINCT ...)`.
+- **Multi-Table Joins:** relazioni a cascata tramite `LEFT JOIN` per preservare l'integrità del campione.
+- **Date & Math Functions:** `TIMESTAMPDIFF()`, `CURRENT_DATE`, `ROUND()`.
 
-Conditional Aggregation & Pivoting: Utilizzo avanzato di SUM(CASE WHEN ...) e COUNT(DISTINCT ...).
-
-Multi-Table Joins: Relazioni a cascata tramite LEFT JOIN per preservare l'integrità del campione.
-
-Date & Math Functions: TIMESTAMPDIFF(), CURRENT_DATE, ROUND().
+---
 
 ## 👤 Autore
-**Alessandro Gravagna**  
+**Alessandro Gravagna**
 *Junior Data Analyst* | Monza (MB), Italia
