@@ -10,7 +10,7 @@ Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, com
 
 Il report integra le transazioni di vendita del 2014, i dati anagrafici dei punti vendita e la gestione dei resi, per fornire un quadro preciso e navigabile delle vendite nette effettive e della redditività territoriale.
 
-**Dataset:** TODO-inserisci-fonte-dataset (es. materiale del corso)
+**Dataset:** Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.
 
 ---
 
