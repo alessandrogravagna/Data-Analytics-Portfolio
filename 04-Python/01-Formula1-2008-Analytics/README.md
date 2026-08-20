@@ -9,7 +9,7 @@ Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, com
 
 Il sistema processa i dati grezzi delle gare (`formula1_data.csv`) applicando il regolamento ufficiale di punteggio F1 2008 per calcolare le metriche di performance individuali dei piloti e generare le classifiche mondiali (Piloti e Costruttori).
 
-**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso)
+**Dataset:** Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.
 
 ---
 
