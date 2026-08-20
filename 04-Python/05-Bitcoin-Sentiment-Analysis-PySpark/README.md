@@ -10,7 +10,7 @@ Progetto di Big Data Analytics realizzato durante il **Master in Data Analytics 
 
 L'obiettivo è stimare il consenso pubblico e il sentiment degli utenti nei confronti del Bitcoin elaborando milioni di tweet raccolti nel tempo, sfruttando la potenza di calcolo distribuito di PySpark su Google Colab. La pipeline pulisce il testo, filtra la lingua inglese, classifica il sentiment giornaliero (positivo, negativo, neutro) tramite TextBlob, misura le metriche di engagement degli utenti (likes e replies) ed esplora la correlazione con lo storico dei prezzi di mercato del Bitcoin (BTC/USD).
 
-**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso)
+**Dataset:** Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.
 
 ---
 
