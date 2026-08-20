@@ -10,7 +10,7 @@ Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, com
 
 L'obiettivo è la progettazione e implementazione in SQL di un **Behavioral Feature Store** denormalizzato (`feature_clienti`), che trasforma il database transazionale relazionale della banca in un dataset analitico a riga singola per cliente, pronto per alimentare modelli di Machine Learning supervisionato (predizione del churn rate, propensione d'acquisto, rilevamento anomalie).
 
-**Dataset:** TODO-inserisci-fonte-dataset (es. materiale del corso)
+**Dataset:** Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.
 
 ---
 
