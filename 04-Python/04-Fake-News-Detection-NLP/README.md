@@ -10,7 +10,7 @@ Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, com
 
 L'obiettivo è realizzare un modello di NLP e Machine Learning in grado di classificare se un articolo di notizia è reale o falso (fake vs true news), a partire dal titolo. Il modello finale è stato serializzato in formato `.pkl` per un ipotetico utilizzo in un'estensione browser che dia un feedback immediato sull'affidabilità della fonte.
 
-**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso) — 21.417 articoli veri, 23.481 articoli fake
+**Dataset:** Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.
 
 ---
 
