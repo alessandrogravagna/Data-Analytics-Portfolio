@@ -10,7 +10,7 @@ Progetto di Machine Learning non supervisionato realizzato durante il **Master i
 
 L'obiettivo è segmentare la base clienti in gruppi comportamentali omogenei basati su saldo residuo, frequenza d'uso, volumi d'acquisto e abitudini di pagamento con carta di credito, per poter progettare strategie promozionali personalizzate per ciascun profilo.
 
-**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso) — circa 9.000 titolari di carta
+**Dataset:** Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.
 
 ---
 
