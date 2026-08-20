@@ -11,7 +11,7 @@ Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, com
 
 L'analisi elabora un dataset di **23.967 record** di incidenti aerei registrati a livello globale tra il 1919 e il 2023, applicando pipeline di data wrangling, feature engineering e geo-analytics per isolare pattern di rischio, valutare la sicurezza degli operatori commerciali/militari e tracciare la curva di sicurezza aeronavale prima e dopo l'11 settembre 2001.
 
-**Dataset:** TODO-inserisci-fonte-dataset (es. Kaggle, materiale del corso)
+**Dataset:** Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.
 
 ---
 
