@@ -8,7 +8,7 @@ Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, com
 
 L'obiettivo è stato ristrutturare e riorganizzare un dataset complesso sui reclami dei consumatori per ottimizzare l'analisi geografica, velocizzare i processi decisionali e monitorare l'efficienza nei tempi di risposta aziendali.
 
-**Dataset:** TODO-inserisci-fonte-dataset (es. materiale del corso)
+**Dataset:** Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.
 
 ---
 
