@@ -1,8 +1,8 @@
 # 📊 Alessandro Gravagna — Data Analytics Portfolio
 
-Junior Data Analyst basato a Monza (MB). Arrivo alla data analytics da un percorso diverso — una laurea in Scienze Motorie — che mi ha abituato a leggere i dati come strumento per capire performance e comportamenti prima ancora di studiarli come disciplina tecnica. Ho completato un master in Data Analytics (ProfessionAI) e raccolgo qui i progetti pratici svolti durante il percorso.
+Junior Data Analyst basato a Monza (MB). Arrivo alla data analytics da un percorso diverso: Una laurea in Scienze Motorie che mi ha abituato a leggere i dati come strumento per capire performance e comportamenti prima ancora di studiarli come disciplina tecnica. Ho completato un master in Data Analytics (ProfessionAI) e raccolgo qui i progetti pratici svolti durante il percorso.
 
-**11 progetti end-to-end** su SQL, Python (Machine Learning, NLP, Big Data), Power BI, Tableau ed Excel — dalla feature engineering bancaria alla classificazione NLP per il rilevamento di disinformazione, dal clustering clienti alla sentiment analysis su larga scala con PySpark.
+**11 progetti end-to-end** su SQL, Python (Machine Learning, NLP, Big Data), Power BI, Tableau ed Excel; dalla feature engineering bancaria alla classificazione NLP per il rilevamento di disinformazione, dal clustering clienti alla sentiment analysis su larga scala con PySpark.
 
 🟢 **Attualmente alla ricerca di opportunità come Junior Data Analyst** a Monza/Milano e in remoto.
 
