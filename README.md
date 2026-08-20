@@ -6,7 +6,7 @@ Junior Data Analyst basato a Monza (MB). Arrivo alla data analytics da un percor
 
 🟢 **Attualmente alla ricerca di opportunità come Junior Data Analyst** a Monza/Milano e in remoto.
 
-📫 **Contatti:** [LinkedIn](TODO-inserisci-link-linkedin) | ✉️ alegrava8@gmail.com
+📫 **Contatti:** [LinkedIn]([TODO-inserisci-link-linkedin](https://www.linkedin.com/in/alessandro-gravagna-3a3050201/)) | ✉️ alegrava8@gmail.com
 
 ---
 
