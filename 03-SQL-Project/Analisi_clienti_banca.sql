@@ -65,5 +65,5 @@ GROUP BY
     c.id_cliente,
     c.data_nascita;
 
--- 5. VERIFICA DEL RISULTATO (Opzionale per il professore)
+-- 5. VERIFICA DEL RISULTATO
 -- SELECT * FROM feature_clienti LIMIT 10;
