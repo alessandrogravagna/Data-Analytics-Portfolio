@@ -66,8 +66,7 @@ a:hover { text-decoration: underline; }
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: #05130f; font-weight: 800; font-size: 14px; letter-spacing: .5px;
 }
-.brand-text { display: flex; flex-direction: column; font-weight: 650; font-size: 15px; line-height: 1.25; }
-.brand-text small { color: var(--muted); font-weight: 400; font-size: 12.5px; }
+.brand-text { font-weight: 650; font-size: 16px; line-height: 1.2; letter-spacing: -.005em; }
 .topnav { display: flex; align-items: center; gap: 26px; font-size: 14.5px; }
 .topnav a { color: var(--muted); }
 .topnav a:hover { color: var(--text); text-decoration: none; }

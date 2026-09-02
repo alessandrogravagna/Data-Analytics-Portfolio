@@ -31,7 +31,7 @@ EMAIL = "alegrava8@gmail.com"
 
 AUTHOR = "Alessandro Gravagna"
 ROLE = "Junior Data Analyst"
-PLACE = "Monza (MB), Italia"
+PLACE = "Monza (MB)"
 
 # --------------------------------------------------------------------------
 # Metadati dei progetti (l'ordine e' quello di pubblicazione in homepage)
@@ -577,7 +577,7 @@ def page(title, description, body, depth=0, extra_head="", body_class=""):
   <div class="wrap topbar-inner">
     <a class="brand" href="{base}index.html">
       <span class="brand-mark">AG</span>
-      <span class="brand-text">{author}<small>{role}</small></span>
+      <span class="brand-text">{author}</span>
     </a>
     <nav class="topnav">
       <a href="{base}index.html#progetti">Progetti</a>
@@ -594,7 +594,7 @@ def page(title, description, body, depth=0, extra_head="", body_class=""):
   <div class="wrap footer-inner">
     <div>
       <strong>{author}</strong><br>
-      <span class="muted">{role} &middot; {place}</span>
+      <span class="muted">{place}</span>
     </div>
     <div class="footer-links">
       <a href="{linkedin}" target="_blank" rel="noopener">LinkedIn</a>
