@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aviation Accidents Analytics — Alessandro Gravagna</title>
+<meta name="description" content="Data wrangling su dati storici sporchi, costruzione di un safety index per operatore su campioni significativi, analisi del trend post 11 settembre e mappa coropletica interattiva.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Aviation Accidents Analytics — Alessandro Gravagna">
+<meta property="og:description" content="Data wrangling su dati storici sporchi, costruzione di un safety index per operatore su campioni significativi, analisi del trend post 11 settembre e mappa coropletica interattiva.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Aviation Safety</span>
+    <h1>✈️ Aviation Accidents Analytics</h1>
+    <p class="lead">Un secolo di incidenti aerei, 1919-2023</p>
+    <div class="chips"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Plotly</span><span class="chip">Matplotlib</span></div>
+    <div class="head-metric"><b>23.967</b><span>record analizzati</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/04-Python/02-Aviation-Accidents-Analytics" target="_blank" rel="noopener">Vedi la cartella su GitHub</a><a class="btn" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/blob/main/04-Python/02-Aviation-Accidents-Analytics/Incidenti_aerei.ipynb" target="_blank" rel="noopener">Apri il notebook</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#insight-e-risultati-chiave-dellanalisi">📊 Insight e Risultati Chiave dell&#x27;Analisi</a><a href="#codice-principale-core-logic">💻 Codice Principale (Core Logic)</a><a href="#competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</a><a href="#come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su Pandas e Data Visualization. Lo scenario di business — un&#x27;organizzazione internazionale per la sicurezza aerea — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>L&#x27;analisi elabora un dataset di <strong>23.967 record</strong> di incidenti aerei registrati a livello globale tra il 1919 e il 2023, applicando pipeline di data wrangling, feature engineering e geo-analytics per isolare pattern di rischio, valutare la sicurezza degli operatori commerciali/militari e tracciare la curva di sicurezza aeronavale prima e dopo l&#x27;11 settembre 2001.</p>
+<p><strong>Dataset:</strong> Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.</p>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Data cleaning avanzato di dati storici:</strong> trattamento dinamico di stringhe complesse nella colonna <code>fatalities</code> tramite parsing condizionale, estrazione regex degli anni e normalizzazione dei valori mancanti/ignoti.
+</li>
+<li><strong>Indice di sicurezza operatori (Safety Index):</strong> normalizzazione del rapporto di mortalità per singolo incidente, applicata a operatori con un campione statisticamente significativo (almeno 20 incidenti).
+</li>
+<li><strong>Analisi temporale &amp; milestone 9/11:</strong> monitoraggio del trend annuale degli incidenti nel periodo 1990–2023 con evidenza visiva dell&#x27;impatto delle normative di sicurezza introdotte dopo il 2001.
+</li>
+<li><strong>Choropleth geo-analytics:</strong> mappatura geospaziale interattiva mediante Plotly Express con allineamento ISO dei nomi geografici (es. Russian Federation, United States, D.R. Congo).
+</li>
+</ul>
+<hr>
+<h2 id="insight-e-risultati-chiave-dellanalisi">📊 Insight e Risultati Chiave dell&#x27;Analisi</h2>
+<ul>
+<li><strong>Geografia del rischio:</strong> Stati Uniti e Russia guidano la classifica globale per volume assoluto di incidenti storici, riflettendo la densità di traffico aereo e flotte operative gestite nell&#x27;ultimo secolo.
+</li>
+<li><strong>Distribuzione settimanale:</strong> il giorno con più incidenti registrati è il venerdì (3.563 eventi), seguito dal giovedì (3.382), mentre la domenica risulta il giorno più tranquillo (2.656).
+</li>
+<li><strong>Operatori più sicuri (almeno 20 incidenti):</strong>
+<ol>
+<li>Southwest Airlines: 0,0769 morti/incidente (26 incidenti, 2 decessi).
+</li>
+<li>ZUA: 0,1250 morti/incidente (32 incidenti, 4 decessi).
+</li>
+</ol>
+</li>
+<li><strong>Velivoli a maggiore impatto:</strong> il Douglas C-47A (DC-3) è il velivolo con il maggior numero cumulativo di fatalità storiche (5.770 decessi), seguito dalle varianti Douglas C-47 (2.636) e Douglas C-47B (1.992).
+</li>
+</ul>
+<hr>
+<h2 id="codice-principale-core-logic">💻 Codice Principale (Core Logic)</h2>
+<div class="code-block" data-lang="python"><pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+# 1. Cleaning della colonna fatalities tramite eval() e parsing temporale
+def pulisci_morti(valore):
+    if pd.isna(valore): return 0
+    try: return eval(str(valore))
+    except: return np.nan
+
+df[&#x27;fatalities&#x27;] = df[&#x27;fatalities&#x27;].apply(pulisci_morti)
+df[&#x27;fatalities&#x27;] = pd.to_numeric(df[&#x27;fatalities&#x27;], errors=&#x27;coerce&#x27;).fillna(0)
+
+df[&#x27;year_extracted&#x27;] = pd.to_numeric(df[&#x27;date&#x27;].str.extract(r&#x27;(\d{4})&#x27;)[0], errors=&#x27;coerce&#x27;)
+df[&#x27;date_parsed&#x27;] = pd.to_datetime(df[&#x27;date&#x27;], errors=&#x27;coerce&#x27;)
+
+# Rimozione record non definiti
+df = df[df[&#x27;operator&#x27;].str.lower() != &#x27;unknown&#x27;]
+df = df[~df[&#x27;country&#x27;].str.lower().str.contains(&#x27;unknown&#x27;, na=False)]
+
+# 2. Ranking Operatori più Sicuri (minimo 20 incidenti)
+analisi_operatori = df.groupby(&#x27;operator&#x27;).agg(
+    totale_incidenti=(&#x27;date&#x27;, &#x27;count&#x27;),
+    totale_morti=(&#x27;fatalities&#x27;, &#x27;sum&#x27;)
+)
+op_rilevanti = analisi_operatori[analisi_operatori[&#x27;totale_incidenti&#x27;] &gt;= 20].copy()
+op_rilevanti[&#x27;morti_per_incidente&#x27;] = op_rilevanti[&#x27;totale_morti&#x27;] / op_rilevanti[&#x27;totale_incidenti&#x27;]
+operatori_sicuri = op_rilevanti.sort_values(&#x27;morti_per_incidente&#x27;, ascending=True)
+
+# 3. Geo-Analytics Interattiva con Plotly
+dati_mappa = df[&#x27;country&#x27;].value_counts().reset_index()
+dati_mappa.columns = [&#x27;nazione&#x27;, &#x27;incidenti&#x27;]
+
+mappa_correzioni = {
+    &#x27;USA&#x27;: &#x27;United States&#x27;,
+    &#x27;U.K.&#x27;: &#x27;United Kingdom&#x27;,
+    &#x27;Russia&#x27;: &#x27;Russian Federation&#x27;,
+    &#x27;S. Africa&#x27;: &#x27;South Africa&#x27;,
+    &#x27;Korea, South&#x27;: &#x27;South Korea&#x27;,
+    &#x27;Korea, North&#x27;: &#x27;North Korea&#x27;,
+    &#x27;Democratic Republic of Congo&#x27;: &#x27;Democratic Republic of the Congo&#x27;
+}
+dati_mappa[&#x27;nazione&#x27;] = dati_mappa[&#x27;nazione&#x27;].replace(mappa_correzioni)
+
+fig = px.choropleth(
+    dati_mappa,
+    locations=&quot;nazione&quot;,
+    locationmode=&quot;country names&quot;,
+    color=&quot;incidenti&quot;,
+    title=&quot;Mappa Globale degli Incidenti Aerei per Nazione&quot;,
+    color_continuous_scale=&quot;Reds&quot;
+)</code></pre></div>
+<hr>
+<h2 id="competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</h2>
+<ul>
+<li><strong>Data Cleansing &amp; Wrangling:</strong> uso di Pandas per la manipolazione di tipi dato eterogenei, valutazioni condizionali dinamiche (<code>eval()</code>) ed estrazioni con espressioni regolari.
+</li>
+<li><strong>Statistical Analysis &amp; Filtering:</strong> aggregazioni di gruppo, calcolo di indici di mortalità ponderati e filtri su campioni statisticamente significativi.
+</li>
+<li><strong>Data Visualization:</strong> bar chart con gradienti cromatici personalizzati in Matplotlib e mappe coropletiche geografiche interattive con Plotly Express.
+</li>
+</ul>
+<hr>
+<h2 id="come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</h2>
+<ol>
+<li>Clona il repository o scarica la cartella <code>02-Aviation-Accidents-Analytics</code>.
+</li>
+<li>Apri il notebook <code>Incidenti_aerei.ipynb</code> su Google Colab o Jupyter Notebook.
+</li>
+<li>Assicurati che l&#x27;URL del dataset o il file <code>aviation-accidents.csv</code> sia raggiungibile.
+</li>
+<li>Esegui le celle per riprodurre le analisi statistiche e la mappa interattiva.
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="bitcoin-sentiment-pyspark.html"><span>Progetto precedente</span><b>Bitcoin Sentiment Analysis</b></a><a class="pager next" href="formula1-2008.html"><span>Progetto successivo</span><b>Formula 1 2008 Analytics</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

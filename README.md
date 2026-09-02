@@ -1,5 +1,9 @@
 # 📊 Alessandro Gravagna — Data Analytics Portfolio
 
+### 🌐 **[Sfoglia il portfolio online → alessandrogravagna.github.io/Data-Analytics-Portfolio](https://alessandrogravagna.github.io/Data-Analytics-Portfolio/)**
+
+*Tutti gli 11 progetti, con anteprime delle dashboard e pagine di dettaglio navigabili.*
+
 Il mio percorso nella Data Analytics parte da un luogo diverso dal solito: il campo da pallavolo. Per 6 anni ho lavorato come allenatore e scoutman in settori giovanili di alto livello (Vero Volley Monza, PowerVolley Milano), raccogliendo dati in tempo reale e costruendo fogli gara in Excel per l'analisi post-partita e lo studio degli avversari. La curiosità andava oltre il richiesto: ogni weekend studiavo per interesse personale gli scout di tutte le partite pubblicati dalla Lega Serie A Volley.
 
 Quella parte del lavoro — raccogliere dati, pulirli e trasformare numeri in decisioni — è diventata la mia passione, da cui la scelta di specializzarmi con un master in Data Analytics (ProfessionAI). Raccolgo qui i progetti pratici svolti durante il percorso.
@@ -52,6 +56,14 @@ Quella parte del lavoro — raccogliere dati, pulirli e trasformare numeri in de
 | **Statistics** | [Luggnagg Population Study](./01-Excel-Projects/03-Statistical-Simulation) | Excel Advanced, Statistica | Simulazione demografica, correlazione e regressione lineare |
 
 Ogni cartella contiene un proprio README con: problema di business, dati utilizzati, approccio e risultati principali.
+
+---
+
+## 🌐 Il sito
+
+Il portfolio è pubblicato con GitHub Pages su **[alessandrogravagna.github.io/Data-Analytics-Portfolio](https://alessandrogravagna.github.io/Data-Analytics-Portfolio/)**.
+
+Le pagine del sito sono generate automaticamente da questi stessi README: il codice del generatore è in [`site/`](./site) e l'output pubblicato in `docs/`. Per rigenerarlo in locale basta `python3 site/build.py`.
 
 ---
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consumer Complaints Analysis — Alessandro Gravagna</title>
+<meta name="description" content="Ristrutturazione di un dataset complesso di reclami: calcolo automatico dei tempi di gestione, incidenze percentuali per Stato USA con soglie visive e identificazione della problematica piu&#x27; frequente.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Consumer Complaints Analysis — Alessandro Gravagna">
+<meta property="og:description" content="Ristrutturazione di un dataset complesso di reclami: calcolo automatico dei tempi di gestione, incidenze percentuali per Stato USA con soglie visive e identificazione della problematica piu&#x27; frequente.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Financial Services</span>
+    <h1>🏦 Consumer Complaints Analysis</h1>
+    <p class="lead">Analisi geografica dei reclami e monitoraggio SLA</p>
+    <div class="chips"><span class="chip">Excel</span><span class="chip">Formattazione condizionale</span><span class="chip">Statistica</span></div>
+    <div class="head-metric"><b>3 tab</b><span>dataset, geografia, statistica</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/01-Excel-Projects/01-Consumer-Complaints" target="_blank" rel="noopener">Vedi la cartella su GitHub</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#dashboard-visual-preview">📊 Dashboard &amp; Visual Preview</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#architettura-del-modello-excel">🛠️ Architettura del Modello Excel</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su Excel avanzato. Lo scenario di business — una società di customer care nel settore finanziario — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>L&#x27;obiettivo è stato ristrutturare e riorganizzare un dataset complesso sui reclami dei consumatori per ottimizzare l&#x27;analisi geografica, velocizzare i processi decisionali e monitorare l&#x27;efficienza nei tempi di risposta aziendali.</p>
+<p><strong>Dataset:</strong> Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.</p>
+<hr>
+<h2 id="dashboard-visual-preview">📊 Dashboard &amp; Visual Preview</h2>
+<p><img src="../assets/img/consumer-complaints-complaints_geographical_insights.png" alt="Geographical Distribution of Complaints" loading="lazy"></p>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Monitoraggio efficienza (SLA):</strong> calcolo automatico dei giorni di gestione tra la ricezione del reclamo e l&#x27;invio alla compagnia, per tracciare la tempestività del servizio.
+</li>
+<li><strong>Analisi geografica mirata:</strong> indicatori visivi e formattazione condizionale per evidenziare la concentrazione di reclami per Stato USA.
+</li>
+<li><strong>Analisi statistica delle problematiche:</strong> identificazione univoca dei motivi di reclamo e individuazione della problematica più frequente tramite calcolo della moda.
+</li>
+</ul>
+<hr>
+<h2 id="architettura-del-modello-excel">🛠️ Architettura del Modello Excel</h2>
+<p>Il file si articola in 3 tab principali:</p>
+<ol>
+<li><strong><code>Consumer complaints</code></strong>: dataset principale ordinato per <code>Complaint ID</code>, con standardizzazione delle date, filtri temporali e calcolo dinamico dei tempi di risposta.
+</li>
+<li><strong><code>Geographical insights</code></strong>: analisi aggregata per Stato USA basata sulla funzione <code>COUNTIF</code> (<code>CONTA.SE</code>), calcolo delle incidenze percentuali e formattazione condizionale (verde &lt; 2%, rosso ≥ 2%).
+</li>
+<li><strong><code>Statistical insights</code></strong>: estrazione delle tipologie uniche di reclamo e calcolo del valore moda tramite la funzione <code>MODE</code> (<code>MODA</code>).
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="formula1-2008.html"><span>Progetto precedente</span><b>Formula 1 2008 Analytics</b></a><a class="pager next" href="retail-sales-reporting.html"><span>Progetto successivo</span><b>Retail Sales Analysis</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

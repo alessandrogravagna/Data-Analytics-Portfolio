@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formula 1 2008 Analytics — Alessandro Gravagna</title>
+<meta name="description" content="Motore di calcolo che applica il regolamento punti F1 2008 ai risultati di gara per generare classifiche piloti e costruttori, senza Pandas: la logica sotto il cofano, scritta a mano.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Formula 1 2008 Analytics — Alessandro Gravagna">
+<meta property="og:description" content="Motore di calcolo che applica il regolamento punti F1 2008 ai risultati di gara per generare classifiche piloti e costruttori, senza Pandas: la logica sotto il cofano, scritta a mano.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Motorsport</span>
+    <h1>🏎️ Formula 1 2008 Analytics</h1>
+    <p class="lead">Classifiche e KPI piloti in Python puro</p>
+    <div class="chips"><span class="chip">Python</span><span class="chip">Standard Library</span><span class="chip">File I/O</span></div>
+    <div class="head-metric"><b>0 librerie</b><span>solo standard library</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/04-Python/01-Formula1-2008-Analytics" target="_blank" rel="noopener">Vedi la cartella su GitHub</a><a class="btn" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/blob/main/04-Python/01-Formula1-2008-Analytics/Analisi_Piloti_F1.ipynb" target="_blank" rel="noopener">Apri il notebook</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#regolamento-punteggi-f1-2008-implementato">⚙️ Regolamento Punteggi F1 2008 Implementato</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#codice-principale-core-logic">💻 Codice Principale (Core Logic)</a><a href="#competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</a><a href="#come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo introduttivo su Python puro (senza librerie esterne). Lo scenario di business — una società di F1 Analytics che elabora dati prestazionali e contabili — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>Il sistema processa i dati grezzi delle gare (<code>formula1_data.csv</code>) applicando il regolamento ufficiale di punteggio F1 2008 per calcolare le metriche di performance individuali dei piloti e generare le classifiche mondiali (Piloti e Costruttori).</p>
+<p><strong>Dataset:</strong> Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.</p>
+<hr>
+<h2 id="regolamento-punteggi-f1-2008-implementato">⚙️ Regolamento Punteggi F1 2008 Implementato</h2>
+<p>Il sistema calcola i punti assegnati al termine di ogni Gran Premio in base alla posizione di arrivo:</p>
+<ul>
+<li><strong>1° Posto:</strong> 10 pt | <strong>2° Posto:</strong> 8 pt | <strong>3° Posto:</strong> 6 pt | <strong>4° Posto:</strong> 5 pt
+</li>
+<li><strong>5° Posto:</strong> 4 pt | <strong>6° Posto:</strong> 3 pt | <strong>7° Posto:</strong> 2 pt | <strong>8° Posto:</strong> 1 pt
+</li>
+<li><strong>9° Posto o oltre:</strong> 0 pt
+</li>
+</ul>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Elaborazione nativa senza dipendenze:</strong> elaborazione dei dati basata sulla libreria standard di Python, senza librerie esterne — utile per capire la logica sotto il cofano prima di affidarsi a Pandas.
+</li>
+<li><strong>Automazione del reporting:</strong> generazione ed esportazione automatica delle classifiche su file di testo (<code>Drivers_Standings_2008.txt</code>).
+</li>
+<li><strong>Consultazione dinamica:</strong> interfaccia interattiva da riga di comando per estrarre KPI individuali (punti, vittorie, podi) per qualsiasi pilota della stagione.
+</li>
+</ul>
+<hr>
+<h2 id="codice-principale-core-logic">💻 Codice Principale (Core Logic)</h2>
+<div class="code-block" data-lang="python"><pre><code>import csv
+
+# Sistema di punteggio ufficiale F1 2008
+PUNTEGGI_2008 = {&quot;1&quot;: 10, &quot;2&quot;: 8, &quot;3&quot;: 6, &quot;4&quot;: 5, &quot;5&quot;: 4, &quot;6&quot;: 3, &quot;7&quot;: 2, &quot;8&quot;: 1}
+
+def ottieni_punti(posizione):
+    return PUNTEGGI_2008.get(posizione, 0)
+
+# 1. Performance individuali pilota
+def analizza_performance_pilota(dati, nome_pilota):
+    punti_totali, vittorie, podi = 0, 0, 0
+    for riga in dati:
+        if riga[&#x27;Driver&#x27;].lower() == nome_pilota.lower():
+            pos = riga[&#x27;Position&#x27;]
+            punti_totali += ottieni_punti(pos)
+            if pos == &quot;1&quot;: vittorie += 1
+            if pos in [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]: podi += 1
+    return [punti_totali, vittorie, podi]
+
+# 2. Generazione Classifica Piloti ed Export File
+def genera_classifica_piloti(dati):
+    classifica = {}
+    for riga in dati:
+        pilota = riga[&#x27;Driver&#x27;]
+        classifica[pilota] = classifica.get(pilota, 0) + ottieni_punti(riga[&#x27;Position&#x27;])
+
+    classifica_ordinata = dict(sorted(classifica.items(), key=lambda item: item[1], reverse=True))
+
+    with open(&quot;Drivers_Standings_2008.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
+        file.write(&quot;Drivers Standings 2008 Formula 1\n&quot;)
+        for pilota, punteggio in classifica_ordinata.items():
+            file.write(f&quot;{pilota}: {punteggio}\n&quot;)
+
+    return classifica_ordinata</code></pre></div>
+<p><strong>Esempio di output:</strong></p>
+<div class="code-block" data-lang="text"><pre><code>RISULTATI PER HAMILTON
+Punti Totali : 98
+Vittorie     : 5
+Podi Totali  : 10
+
+CLASSIFICA PILOTI 2008
+1º - Hamilton        98 pt
+2º - Massa           97 pt
+3º - Raikkonen       75 pt</code></pre></div>
+<hr>
+<h2 id="competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</h2>
+<ul>
+<li><strong>File I/O &amp; Parsing:</strong> lettura/scrittura file con gestione sicura dei contesti (<code>with open</code>), codifica UTF-8 e <code>csv.DictReader</code>.
+</li>
+<li><strong>Data Structures:</strong> manipolazione di dizionari, liste e insiemi (<code>set</code>) per deduplicazione e aggregazione in memoria.
+</li>
+<li><strong>Functional Sorting &amp; Lambdas:</strong> ordinamento dinamico per valore con <code>sorted(..., key=lambda item: item[1], reverse=True)</code>.
+</li>
+<li><strong>String Formatting &amp; CLI:</strong> formattazione dell&#x27;output con f-string e <code>ljust()</code>.
+</li>
+</ul>
+<hr>
+<h2 id="come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</h2>
+<ol>
+<li>Scarica la cartella <code>01-Formula1-2008-Analytics</code>.
+</li>
+<li>Apri il notebook <code>F1_2008_Performance_Analysis.ipynb</code> su Google Colab o Jupyter Notebook.
+</li>
+<li>Assicurati che il dataset <code>formula1_data.csv</code> si trovi nella stessa directory del file <code>.ipynb</code>.
+</li>
+<li>Esegui le celle in sequenza per avviare l&#x27;analisi interattiva.
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="aviation-accidents.html"><span>Progetto precedente</span><b>Aviation Accidents Analytics</b></a><a class="pager next" href="consumer-complaints.html"><span>Progetto successivo</span><b>Consumer Complaints Analysis</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TechMarket Sales &amp; Returns Analytics — Alessandro Gravagna</title>
+<meta name="description" content="Report su una catena di elettronica di consumo: pipeline ETL in Power Query, modello a stella, calcolo delle vendite nette al netto dei resi e geolocalizzazione delle performance per citta&#x27;.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="TechMarket Sales &amp; Returns Analytics — Alessandro Gravagna">
+<meta property="og:description" content="Report su una catena di elettronica di consumo: pipeline ETL in Power Query, modello a stella, calcolo delle vendite nette al netto dei resi e geolocalizzazione delle performance per citta&#x27;.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Retail BI</span>
+    <h1>🏬 TechMarket Sales &amp; Returns Analytics</h1>
+    <p class="lead">Dashboard Power BI con star schema e misure DAX</p>
+    <div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span></div>
+    <div class="head-metric"><b>5 aree</b><span>di report navigabili a bookmark</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/02-Business%20Intelligence/01-PowerBI-TechMarket" target="_blank" rel="noopener">Vedi la cartella su GitHub</a><a class="btn" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/blob/main/02-Business%20Intelligence/01-PowerBI-TechMarket/Report%20sui%20punti%20vendita%20di%20una%20catena%20di%20distribuzione%20di%20elettronica%20v2.pbix" target="_blank" rel="noopener">Scarica il file .pbix</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#interactive-dashboard-preview">📊 Interactive Dashboard Preview</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#modello-dati-pipeline-etl-power-query">📐 Modello Dati &amp; Pipeline ETL (Power Query)</a><a href="#struttura-delle-5-aree-di-report">🖥️ Struttura delle 5 Aree di Report</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su Power BI. Lo scenario di business — una catena di distribuzione al dettaglio di elettronica di consumo in Italia — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>Il report integra le transazioni di vendita del 2014, i dati anagrafici dei punti vendita e la gestione dei resi, per fornire un quadro preciso e navigabile delle vendite nette effettive e della redditività territoriale.</p>
+<p><strong>Dataset:</strong> Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.</p>
+<hr>
+<h2 id="interactive-dashboard-preview">📊 Interactive Dashboard Preview</h2>
+<p><img src="../assets/img/powerbi-techmarket-powerbi_dashboard_preview.png" alt="Dashboard Preview" loading="lazy"> <em>(Figura 1: Analisi di dettaglio dei prodotti, quote di mercato su totale fatturato e filtri dinamici per città)</em></p>
+<p><img src="../assets/img/powerbi-techmarket-powerbi_city_analysis.png" alt="City Analysis Preview" loading="lazy"> <em>(Figura 2: Analisi geografica delle performance di vendita con distribuzione per città, mappa territoriale interattiva e menu di navigazione)</em></p>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Analisi resi e vendite nette:</strong> calcolo dinamico del fatturato netto effettivo per punto vendita, tramite l&#x27;integrazione contabile del modulo resi (gennaio/febbraio).
+</li>
+<li><strong>Geolocalizzazione delle performance:</strong> mappatura geografica per identificare rapidamente i cluster regionali e le città top performer (es. Roma e Verona).
+</li>
+<li><strong>UX/UI navigabile con bookmark:</strong> menu di navigazione integrato con pulsanti d&#x27;azione e segnalibri (bookmark) per esplorare 5 aree di analisi senza affollare la visualizzazione.
+</li>
+</ul>
+<hr>
+<h2 id="modello-dati-pipeline-etl-power-query">📐 Modello Dati &amp; Pipeline ETL (Power Query)</h2>
+<ul>
+<li><strong>Data ingestion &amp; merge:</strong> importazione ed elaborazione di file mensili e anagrafiche (negozi, prodotti, province). Operazioni di <code>Merge</code> in Power Query per associare prezzo unitario, descrizione prodotto e responsabile tramite chiavi relazionali (<code>Prodotto_ID</code>, <code>Store_ID</code>).
+</li>
+<li><strong>Star schema:</strong> modello relazionale a stella tra le tabelle di dimensione (<code>Dim_Prodotti</code>, <code>Dim_Negozi</code>) e le tabelle dei fatti (<code>Fact_Vendite</code>, <code>Fact_Resi</code>).
+</li>
+<li><strong>Misure DAX implementate:</strong>
+<ul>
+<li><code>Vendite Totali = SUMX(Vendite, Unità Vendute * Prezzo Unitario * (1 - Sconto))</code>
+</li>
+<li><code>Vendite Nette = Vendite Totali - Valore Resi</code>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="struttura-delle-5-aree-di-report">🖥️ Struttura delle 5 Aree di Report</h2>
+<ol>
+<li><strong>📍 Vendite per Città:</strong> istogrammi delle unità vendute e mappatura geografica territoriale.
+</li>
+<li><strong>📅 Vendite per Mese:</strong> trend temporale di andamento vendite, prezzi medi e sconti applicati.
+</li>
+<li><strong>📦 Dettaglio Prodotto:</strong> donut chart sulle quote di mercato e slicer condizionali.
+</li>
+<li><strong>🏪 Info Negozi:</strong> ranking responsabili store, fatturato totale e volumi per indirizzo.
+</li>
+<li><strong>🔄 Gestione Resi:</strong> focus contabile sulle vendite nette al netto delle merci rese.
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="credit-card-segmentation.html"><span>Progetto precedente</span><b>Credit Card Customer Segmentation</b></a><a class="pager next" href="tableau-superstore-europa.html"><span>Progetto successivo</span><b>Superstore Europa</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

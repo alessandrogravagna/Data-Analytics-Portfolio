@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fake News Detection — Alessandro Gravagna</title>
+<meta name="description" content="Pipeline NLP con TF-IDF su unigrammi e bigrammi, arricchita con feature strutturali del titolo (lunghezza, maiuscole, punti esclamativi) e modello di regressione logistica serializzato per il riuso.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Fake News Detection — Alessandro Gravagna">
+<meta property="og:description" content="Pipeline NLP con TF-IDF su unigrammi e bigrammi, arricchita con feature strutturali del titolo (lunghezza, maiuscole, punti esclamativi) e modello di regressione logistica serializzato per il riuso.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Media / NLP</span>
+    <h1>📰 Fake News Detection</h1>
+    <p class="lead">Classificazione NLP di titoli veri vs. disinformazione</p>
+    <div class="chips"><span class="chip">Python</span><span class="chip">NLP</span><span class="chip">TF-IDF</span><span class="chip">Scikit-learn</span></div>
+    <div class="head-metric"><b>99%</b><span>accuracy su 8.980 articoli</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/04-Python/04-Fake-News-Detection-NLP" target="_blank" rel="noopener">Vedi la cartella su GitHub</a><a class="btn" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/blob/main/04-Python/04-Fake-News-Detection-NLP/Fake_News_Detection_NLP.ipynb" target="_blank" rel="noopener">Apri il notebook</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#pipeline-nlp-e-metodologia-di-modellazione">⚙️ Pipeline NLP e Metodologia di Modellazione</a><a href="#key-insights-e-risultati-analitici">📊 Key Insights e Risultati Analitici</a><a href="#codice-principale-core-logic">💻 Codice Principale (Core Logic)</a><a href="#competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</a><a href="#come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su Natural Language Processing. Lo scenario di business — un motore di classificazione integrabile in un&#x27;estensione browser — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>L&#x27;obiettivo è realizzare un modello di NLP e Machine Learning in grado di classificare se un articolo di notizia è reale o falso (fake vs true news), a partire dal titolo. Il modello finale è stato serializzato in formato <code>.pkl</code> per un ipotetico utilizzo in un&#x27;estensione browser che dia un feedback immediato sull&#x27;affidabilità della fonte.</p>
+<p><strong>Dataset:</strong> Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.</p>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Riconoscimento di pattern stilistici legati alla disinformazione</strong>, non solo classificazione a scatola chiusa.
+</li>
+<li><strong>Feature engineering ibrido</strong>, combinando testo e metriche numeriche strutturali.
+</li>
+<li><strong>Pipeline riproducibile ed esportabile</strong>, dal training alla serializzazione del modello.
+</li>
+</ul>
+<hr>
+<h2 id="pipeline-nlp-e-metodologia-di-modellazione">⚙️ Pipeline NLP e Metodologia di Modellazione</h2>
+<ol>
+<li><strong>Analisi Esplorativa dei Dati (EDA):</strong>
+<ul>
+<li>Unione dei dataset True e Fake con bilanciamento del target (<code>is_fake</code>: 0 per vere, 1 per fake).
+</li>
+<li>Analisi delle distribuzioni per categoria (<code>subject</code>) per individuare quali temi sono più esposti alla disinformazione.
+</li>
+<li>Feature extraction dai titoli (lunghezza, conteggio lettere maiuscole, punti esclamativi).
+</li>
+</ul>
+</li>
+<li><strong>Preprocessing e Pulizia del Testo:</strong>
+<ul>
+<li>Normalizzazione in minuscolo e rimozione della punteggiatura/caratteri speciali tramite espressioni regolari.
+</li>
+<li>Eliminazione delle stopwords inglesi tramite la libreria <code>nltk</code>.
+</li>
+</ul>
+</li>
+<li><strong>Feature Engineering Ibrido (Testo + Struttura):</strong>
+<ul>
+<li>Vettorizzazione del testo dei titoli tramite TF-IDF Vectorizer (limitato a 5.000 unigrammi/bigrammi più rilevanti).
+</li>
+<li>Combinazione della matrice sparsa TF-IDF con le metriche numeriche strutturali dei titoli tramite <code>scipy.sparse.hstack</code>.
+</li>
+</ul>
+</li>
+<li><strong>Modellazione e Validazione:</strong>
+<ul>
+<li>Divisione del dataset in training set (80%) e test set (20%) stratificato.
+</li>
+<li>Addestramento di un classificatore di Regressione Logistica.
+</li>
+<li>Valutazione delle performance tramite accuracy, precision, recall, F1-score e matrice di confusione.
+</li>
+</ul>
+</li>
+<li><strong>Esportazione del Modello:</strong>
+<ul>
+<li>Serializzazione del modello addestrato e del vettorizzatore TF-IDF in file <code>.pkl</code>.
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="key-insights-e-risultati-analitici">📊 Key Insights e Risultati Analitici</h2>
+<ul>
+<li><strong>Pattern stilistici dei titoli (clickbait):</strong> i titoli delle fake news sono sensibilmente più lunghi (media di 94,2 caratteri contro 64,7 delle notizie vere) e mostrano un uso massiccio di maiuscole (27,8 lettere maiuscole medie contro 3,55) e più punti esclamativi.
+</li>
+<li><strong>Analisi dei temi:</strong> i temi maggiormente soggetti a fake news risultano essere News Generali, Politica e Left News. Le categorie politicsNews e worldnews contengono esclusivamente notizie verificate.
+</li>
+<li><strong>Performance del modello:</strong> accuracy globale del 99% sul test set di 8.980 articoli, con precision e recall di 0,99 per entrambe le classi.
+</li>
+</ul>
+<hr>
+<h2 id="codice-principale-core-logic">💻 Codice Principale (Core Logic)</h2>
+<div class="code-block" data-lang="python"><pre><code>import scipy.sparse as sp
+import pickle
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, confusion_matrix
+
+# 1. Vettorizzazione TF-IDF dei titoli puliti
+tfidf = TfidfVectorizer(max_features=5000)
+X_tfidf = tfidf.fit_transform(df[&#x27;title_clean&#x27;])
+
+# 2. Estrazione e Unione delle Feature Strutturali (Lunghezza, Maiuscole, Esclamativi)
+X_numeric = df[[&#x27;title_len&#x27;, &#x27;title_uppercase&#x27;, &#x27;title_exclamations&#x27;]].values
+X = sp.hstack((X_tfidf, X_numeric), format=&#x27;csr&#x27;)
+y = df[&#x27;is_fake&#x27;].values
+
+# 3. Train/Test Split (80/20)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+# 4. Addestramento Classificatore
+modello = LogisticRegression(max_iter=1000)
+modello.fit(X_train, y_train)
+
+# 5. Valutazione
+y_pred = modello.predict(X_test)
+print(classification_report(y_test, y_pred))
+
+# 6. Esportazione Modello e Vettorizzatore
+with open(&#x27;fake_news_model.pkl&#x27;, &#x27;wb&#x27;) as f:
+    pickle.dump(modello, f)
+
+with open(&#x27;tfidf_vectorizer.pkl&#x27;, &#x27;wb&#x27;) as f:
+    pickle.dump(tfidf, f)</code></pre></div>
+<hr>
+<h2 id="competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</h2>
+<ul>
+<li><strong>Natural Language Processing:</strong> rimozione stopwords con NLTK, espressioni regolari, TF-IDF vectorization, text cleaning.
+</li>
+<li><strong>Feature Engineering:</strong> combinazione di matrici sparse (NLP) e variabili numeriche dense tramite SciPy.
+</li>
+<li><strong>Supervised Machine Learning:</strong> classificazione con Regressione Logistica, train/test split stratificato.
+</li>
+<li><strong>Model Evaluation:</strong> precision, recall, F1-score, matrice di confusione, serializzazione del modello con pickle.
+</li>
+<li><strong>Data Visualization:</strong> countplot e cross-tabulation con Seaborn per l&#x27;analisi dei temi e delle metriche stilistiche.
+</li>
+</ul>
+<hr>
+<h2 id="come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</h2>
+<ol>
+<li>Clona la repository o scarica la cartella <code>04-Fake-News-Detection-NLP</code>.
+</li>
+<li>Assicurati di avere installato le librerie necessarie (<code>pandas</code>, <code>scikit-learn</code>, <code>nltk</code>, <code>seaborn</code>, <code>scipy</code>).
+</li>
+<li>Apri ed esegui il notebook <code>Fake_News_Detection_NLP.ipynb</code> su Google Colab o Jupyter Notebook.
+</li>
+<li>I file <code>fake_news_model.pkl</code> e <code>tfidf_vectorizer.pkl</code> verranno generati nella directory di lavoro.
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="tableau-superstore-europa.html"><span>Progetto precedente</span><b>Superstore Europa</b></a><a class="pager next" href="bitcoin-sentiment-pyspark.html"><span>Progetto successivo</span><b>Bitcoin Sentiment Analysis</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

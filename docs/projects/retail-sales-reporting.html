@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retail Sales Analysis — Alessandro Gravagna</title>
+<meta name="description" content="Sistema di BI costruito interamente su Excel: impatto degli sconti sulla marginalita&#x27; reale, medie mobili a 3 e 6 mesi per la pianificazione scorte e dashboard interattiva con slicer.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Retail Sales Analysis — Alessandro Gravagna">
+<meta property="og:description" content="Sistema di BI costruito interamente su Excel: impatto degli sconti sulla marginalita&#x27; reale, medie mobili a 3 e 6 mesi per la pianificazione scorte e dashboard interattiva con slicer.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Retail</span>
+    <h1>👠 Retail Sales Analysis</h1>
+    <p class="lead">Margini, promozioni e stagionalita&#x27; in un unico report</p>
+    <div class="chips"><span class="chip">Excel</span><span class="chip">Power Query</span><span class="chip">Pivot</span><span class="chip">Slicer</span></div>
+    <div class="head-metric"><b>MoM / YoY</b><span>medie mobili e stagionalita&#x27;</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/01-Excel-Projects/02-Retail-Sales-Reporting" target="_blank" rel="noopener">Vedi la cartella su GitHub</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#executive-dashboard-preview">📊 Executive Dashboard Preview</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#architettura-del-modello-excel">🛠️ Architettura del Modello Excel</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su Excel avanzato e Power Query. Lo scenario di business — una catena retail/e-commerce di calzature che vuole passare a un approccio data-driven — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>Il progetto costruisce un sistema di Business Intelligence su Microsoft Excel basato sul dataset pubblico <em>Global Superstore</em>, con l&#x27;obiettivo di ottimizzare le vendite, i margini sulle promozioni e l&#x27;analisi dei trend stagionali.</p>
+<p><strong>Dataset:</strong> Global Superstore (dataset pubblico ampiamente usato per esercitazioni di BI)</p>
+<hr>
+<h2 id="executive-dashboard-preview">📊 Executive Dashboard Preview</h2>
+<p><img src="../assets/img/retail-sales-reporting-trendyshoes_dashboard.png" alt="Dashboard Preview" loading="lazy"> <em>(Figura 1: Report visivo interattivo con KPI di sintesi, analisi delle vendite per area e filtri temporali)</em></p>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Ottimizzazione promozioni &amp; margini:</strong> analisi dell&#x27;impatto degli sconti sui profitti effettivi, per identificare i prodotti ad alta marginalità e ridurre le promozioni infruttuose.
+</li>
+<li><strong>Pianificazione scorte &amp; stagionalità:</strong> calcolo di medie mobili e tassi di crescita mensili per prevedere i picchi di domanda e ottimizzare il riassortimento.
+</li>
+<li><strong>Data-driven decision making:</strong> dashboard interattiva con filtri visivi per decisioni rapide per regione e categoria.
+</li>
+</ul>
+<hr>
+<h2 id="architettura-del-modello-excel">🛠️ Architettura del Modello Excel</h2>
+<p>Il modello è organizzato nei seguenti tab:</p>
+<ol>
+<li><strong><code>Statistica descrittiva</code></strong>: calcolo di medie mobili (3 e 6 mesi), tassi di crescita (MoM/YoY), deviazione standard e indici di stagionalità.
+</li>
+<li><strong><code>Tabelle pivot</code></strong>: aggregazioni dinamiche di fatturato e profitti per area geografica, categoria prodotto e canale distributivo.
+</li>
+<li><strong><code>Dashboard</code></strong>: report visivo con KPI principali (fatturato, profitto netto, margine %), grafici dinamici e slicer interattivi.
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="consumer-complaints.html"><span>Progetto precedente</span><b>Consumer Complaints Analysis</b></a><a class="pager next" href="luggnagg-population-study.html"><span>Progetto successivo</span><b>Luggnagg Population Study</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

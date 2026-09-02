@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitcoin Sentiment Analysis — Alessandro Gravagna</title>
+<meta name="description" content="Pipeline PySpark su milioni di tweet: pulizia regex, language detection e sentiment analysis vettorizzata via Pandas UDF, join temporale con lo storico BTC/USD e lettura critica di una correlazione che risulta assente.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Bitcoin Sentiment Analysis — Alessandro Gravagna">
+<meta property="og:description" content="Pipeline PySpark su milioni di tweet: pulizia regex, language detection e sentiment analysis vettorizzata via Pandas UDF, join temporale con lo storico BTC/USD e lettura critica di una correlazione che risulta assente.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Finance / Crypto</span>
+    <h1>₿ Bitcoin Sentiment Analysis</h1>
+    <p class="lead">Sentiment su larga scala con calcolo distribuito</p>
+    <div class="chips"><span class="chip">PySpark</span><span class="chip">Big Data</span><span class="chip">TextBlob</span><span class="chip">Pandas UDF</span></div>
+    <div class="head-metric"><b>r ≈ 0,01</b><span>correlazione sentiment / prezzo BTC</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/04-Python/05-Bitcoin-Sentiment-Analysis-PySpark" target="_blank" rel="noopener">Vedi la cartella su GitHub</a><a class="btn" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/blob/main/04-Python/05-Bitcoin-Sentiment-Analysis-PySpark/Bitcoin_Sentiment_Analysis_PySpark.ipynb" target="_blank" rel="noopener">Apri il notebook</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#pipeline-big-data-metodologia">⚙️ Pipeline Big Data &amp; Metodologia</a><a href="#risultati-ed-insight-principali">📊 Risultati ed Insight Principali</a><a href="#codice-principale-core-logic-in-pyspark">💻 Codice Principale (Core Logic in PySpark)</a><a href="#competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</a><a href="#come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto di Big Data Analytics realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su Big Data e PySpark. Lo scenario di business — una società di ricerche di mercato che monitora il sentiment sul Bitcoin — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>L&#x27;obiettivo è stimare il consenso pubblico e il sentiment degli utenti nei confronti del Bitcoin elaborando milioni di tweet raccolti nel tempo, sfruttando la potenza di calcolo distribuito di PySpark su Google Colab. La pipeline pulisce il testo, filtra la lingua inglese, classifica il sentiment giornaliero (positivo, negativo, neutro) tramite TextBlob, misura le metriche di engagement degli utenti (likes e replies) ed esplora la correlazione con lo storico dei prezzi di mercato del Bitcoin (BTC/USD).</p>
+<p><strong>Dataset:</strong> Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.</p>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Elaborazione distribuita su larga scala</strong>, non solo su un singolo notebook Pandas.
+</li>
+<li><strong>Sentiment analysis vettorizzata</strong> con Pandas UDF per performance su grandi volumi.
+</li>
+<li><strong>Analisi critica dei risultati</strong>: il progetto non si limita a mostrare correlazioni, ma le interpreta correttamente quando risultano deboli o assenti.
+</li>
+</ul>
+<hr>
+<h2 id="pipeline-big-data-metodologia">⚙️ Pipeline Big Data &amp; Metodologia</h2>
+<ol>
+<li><strong>Configurazione dell&#x27;Ambiente PySpark:</strong> inizializzazione di una SparkSession con Apache Arrow attivato e tuning delle partizioni di shuffle.
+</li>
+<li><strong>Data Ingestion &amp; Data Cleaning:</strong> lettura di due dataset (tweet su Bitcoin e storico prezzi BTC/USD), filtro sui timestamp validi, cast dei campi numerici e pulizia del testo con regex (rimozione URL, entità HTML, caratteri speciali).
+</li>
+<li><strong>Rilevamento della lingua</strong> tramite Pandas UDF (<code>langdetect</code>) per mantenere solo i tweet in inglese.
+</li>
+<li><strong>Sentiment Analysis con TextBlob:</strong> applicazione vettorizzata tramite Pandas UDF per la polarità del testo, classificando ogni tweet come positivo, negativo o neutro.
+</li>
+<li><strong>Analisi dell&#x27;Engagement:</strong> calcolo della media di likes e replies per ogni categoria di sentiment.
+</li>
+<li><strong>Join Temporale &amp; Correlazione:</strong> aggregazione giornaliera dei volumi di tweet per sentiment, join con lo storico prezzi Bitcoin, calcolo della correlazione di Pearson tra tweet positivi/negativi e prezzo di chiusura.
+</li>
+<li><strong>Data Visualization:</strong> grafici temporali con Seaborn e Matplotlib (scala logaritmica sul trend storico, focus lineare sul 2019).
+</li>
+</ol>
+<hr>
+<h2 id="risultati-ed-insight-principali">📊 Risultati ed Insight Principali</h2>
+<ul>
+<li><strong>Engagement sui social media:</strong> i tweet con sentiment negativo ricevono in media più like (8,62) rispetto a quelli positivi (8,28) e neutri (7,85). I tweet positivi generano invece più risposte in media (1,11) rispetto ai negativi (0,91), a indicare che i messaggi positivi stimolano più interazione diretta.
+</li>
+<li><strong>Correlazione tra sentiment e prezzo BTC/USD:</strong> l&#x27;indice di correlazione di Pearson tra i tweet giornalieri e il prezzo di chiusura del Bitcoin risulta prossimo a zero (circa 0,01 sia per i tweet positivi che per i negativi).
+</li>
+<li><strong>Conclusione:</strong> non emerge una correlazione lineare diretta tra il volume giornaliero di tweet e il prezzo del Bitcoin. Le variazioni di prezzo sono guidate da dinamiche macroeconomiche e finanziarie più complesse rispetto al solo volume di post sui social.
+</li>
+</ul>
+<hr>
+<h2 id="codice-principale-core-logic-in-pyspark">💻 Codice Principale (Core Logic in PySpark)</h2>
+<div class="code-block" data-lang="python"><pre><code>from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, to_date, avg, count, pandas_udf
+from pyspark.sql.types import StringType
+import pandas as pd
+from textblob import TextBlob
+
+# 1. Inizializzazione Sessione PySpark
+spark = SparkSession.builder \
+    .appName(&quot;Bitcoin_Sentiment_Analysis&quot;) \
+    .config(&quot;spark.execution.arrow.pyspark.enabled&quot;, &quot;true&quot;) \
+    .getOrCreate()
+
+# 2. Pandas UDF per Sentiment Analysis Vettorizzata
+@pandas_udf(StringType())
+def sentiment_pandas_udf(texts: pd.Series) -&gt; pd.Series:
+    def get_sentiment(text):
+        if not text: return &quot;neutro&quot;
+        pol = TextBlob(str(text)).sentiment.polarity
+        return &quot;positivo&quot; if pol &gt; 0 else (&quot;negativo&quot; if pol &lt; 0 else &quot;neutro&quot;)
+    return texts.apply(get_sentiment)
+
+df_con_sentiment = df_pulito.withColumn(&quot;sentiment&quot;, sentiment_pandas_udf(col(&quot;testo_pulito&quot;))).cache()
+
+# 3. Analisi dell&#x27;Engagement Medio
+df_engagement = df_con_sentiment.groupBy(&quot;sentiment&quot;).agg(
+    avg(&quot;likes_num&quot;).alias(&quot;media_likes&quot;),
+    avg(&quot;replies_num&quot;).alias(&quot;media_risposte&quot;)
+)
+df_engagement.show()
+
+# 4. Calcolo della Correlazione di Pearson con il Prezzo BTC
+corr_positivi = df_output_correlazione.stat.corr(&quot;tweet_positivi&quot;, &quot;Close&quot;)
+corr_negativi = df_output_correlazione.stat.corr(&quot;tweet_negativi&quot;, &quot;Close&quot;)</code></pre></div>
+<hr>
+<h2 id="competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</h2>
+<ul>
+<li><strong>Big Data Processing:</strong> PySpark SQL &amp; DataFrames, integrazione Apache Arrow, caching, esecuzione distribuita su Google Colab.
+</li>
+<li><strong>Natural Language Processing &amp; Feature Engineering:</strong> text cleaning con regex, language detection con <code>langdetect</code>, sentiment analysis con TextBlob.
+</li>
+<li><strong>High-Performance Execution:</strong> Pandas UDF ottimizzate per elaborazioni vettorizzate.
+</li>
+<li><strong>Data Integration &amp; Statistical Analysis:</strong> pivot temporale, join di dataset eterogenei, correlazione di Pearson.
+</li>
+<li><strong>Data Visualization:</strong> Matplotlib e Seaborn per subplot temporali (scala logaritmica e lineare).
+</li>
+</ul>
+<hr>
+<h2 id="come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</h2>
+<ol>
+<li>Apri Google Colab e carica il notebook <code>Bitcoin_Sentiment_Analysis_PySpark.ipynb</code>.
+</li>
+<li>Esegui la prima cella per installare le dipendenze Big Data (<code>pyspark</code>, <code>langdetect</code>, <code>pyarrow</code>).
+</li>
+<li>Esegui le celle in sequenza: il codice scaricherà automaticamente i dataset dei tweet e dello storico prezzi BTC/USD.
+</li>
+<li>Consulta i dataframe aggregati, la tabella di engagement e i grafici temporali del sentiment generati.
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="fake-news-detection.html"><span>Progetto precedente</span><b>Fake News Detection</b></a><a class="pager next" href="aviation-accidents.html"><span>Progetto successivo</span><b>Aviation Accidents Analytics</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

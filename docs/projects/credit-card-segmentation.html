@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credit Card Customer Segmentation — Alessandro Gravagna</title>
+<meta name="description" content="Segmentazione comportamentale della base clienti su 17 feature transazionali, con log-transform, standardizzazione, validazione via Elbow/Silhouette e proiezione PCA. Ogni cluster ha una strategia promozionale dedicata.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Credit Card Customer Segmentation — Alessandro Gravagna">
+<meta property="og:description" content="Segmentazione comportamentale della base clienti su 17 feature transazionali, con log-transform, standardizzazione, validazione via Elbow/Silhouette e proiezione PCA. Ogni cluster ha una strategia promozionale dedicata.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Banking</span>
+    <h1>💳 Credit Card Customer Segmentation</h1>
+    <p class="lead">Clustering K-Means e strategie di marketing mirate</p>
+    <div class="chips"><span class="chip">Python</span><span class="chip">Scikit-learn</span><span class="chip">K-Means</span><span class="chip">PCA</span></div>
+    <div class="head-metric"><b>4 cluster</b><span>profili cliente azionabili</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/04-Python/03-Credit-Card-Customer-Segmentation" target="_blank" rel="noopener">Vedi la cartella su GitHub</a><a class="btn" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/blob/main/04-Python/03-Credit-Card-Customer-Segmentation/Credit_Card_Customer_Segmentation.ipynb" target="_blank" rel="noopener">Apri il notebook</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#pipeline-di-machine-learning-e-metodologia">⚙️ Pipeline di Machine Learning e Metodologia</a><a href="#profilazione-dei-cluster-business-personas">📊 Profilazione dei Cluster (Business Personas)</a><a href="#codice-principale-core-logic">💻 Codice Principale (Core Logic)</a><a href="#competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</a><a href="#come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto di Machine Learning non supervisionato realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su Machine Learning. Lo scenario di business — una società finanziaria che vuole segmentare la propria clientela — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>L&#x27;obiettivo è segmentare la base clienti in gruppi comportamentali omogenei basati su saldo residuo, frequenza d&#x27;uso, volumi d&#x27;acquisto e abitudini di pagamento con carta di credito, per poter progettare strategie promozionali personalizzate per ciascun profilo.</p>
+<p><strong>Dataset:</strong> Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.</p>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Segmentazione comportamentale data-driven:</strong> superamento delle logiche di segmentazione meramente demografiche tramite l&#x27;estrazione di pattern transazionali reali.
+</li>
+<li><strong>Ottimizzazione del budget marketing:</strong> identificazione dei cluster ad alta redditività (&quot;Big Spenders&quot;) per azioni di fidelizzazione e dei cluster inattivi per campagne di re-ingaggio.
+</li>
+<li><strong>Personalizzazione dell&#x27;offerta creditizia:</strong> individuazione dei clienti con alta propensione agli acquisti rateali o all&#x27;anticipo contanti.
+</li>
+</ul>
+<hr>
+<h2 id="pipeline-di-machine-learning-e-metodologia">⚙️ Pipeline di Machine Learning e Metodologia</h2>
+<ol>
+<li><strong>Analisi Esplorativa (EDA) &amp; Data Cleaning:</strong>
+<ul>
+<li>Ispezione della struttura dei dati e analisi della matrice di correlazione tra le variabili.
+</li>
+<li>Imputazione dei valori mancanti con la mediana per <code>MINIMUM_PAYMENTS</code> e <code>CREDIT_LIMIT</code>.
+</li>
+<li>Rimozione dell&#x27;identificativo categorico non informativo (<code>CUST_ID</code>).
+</li>
+</ul>
+</li>
+<li><strong>Preprocessing &amp; Feature Engineering:</strong>
+<ul>
+<li>Applicazione della trasformazione logaritmica log(1+x) su tutte le variabili monetarie (<code>BALANCE</code>, <code>PURCHASES</code>, <code>CASH_ADVANCE</code>, <code>PAYMENTS</code>, ecc.) per attenuare l&#x27;asimmetria positiva e l&#x27;impatto dei valori estremi.
+</li>
+<li>Standardizzazione delle feature tramite <code>StandardScaler()</code> per uniformare la scala prima del calcolo delle distanze euclidee.
+</li>
+</ul>
+</li>
+<li><strong>Clustering Non Supervisionato (K-Means):</strong>
+<ul>
+<li>Valutazione del numero ottimale di cluster (k=4) tramite Elbow Method e Silhouette Score.
+</li>
+</ul>
+</li>
+<li><strong>Riduzione Dimensionale &amp; Visualizzazione (PCA):</strong>
+<ul>
+<li>Proiezione delle 17 feature su 2 componenti principali per l&#x27;ispezione visiva e la verifica della separazione tra i cluster.
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="profilazione-dei-cluster-business-personas">📊 Profilazione dei Cluster (Business Personas)</h2>
+<div class="table-wrap"><table><thead><tr><th>Cluster</th><th>Archetipo</th><th>Caratteristiche Finanziarie</th><th>Strategia di Marketing Mirata</th></tr></thead><tbody><tr><td><strong>Cluster 0</strong></td><td>Low Engagement / Inattivi</td><td>Saldo e limite di credito contenuti, frequenza d&#x27;acquisto molto bassa.</td><td>Re-ingaggio con bonus cashback o incentivi all&#x27;attivazione.</td></tr><tr><td><strong>Cluster 1</strong></td><td>Cash Advance Dependent</td><td>Elevato saldo residuo, frequenza e importi d&#x27;anticipo contante alti.</td><td>Consolidamento debito: prestiti personali a tassi agevolati.</td></tr><tr><td><strong>Cluster 2</strong></td><td>Big Spenders / VIP</td><td>Elevata capacità di spesa, alto limite di credito, alta % di pagamento completo.</td><td>Retention premium: upgrade Gold/Platinum, cashback su acquisti luxury.</td></tr><tr><td><strong>Cluster 3</strong></td><td>Installment Lovers</td><td>Forte prevalenza di acquisti rateali ed elevata frequenza transazionale.</td><td>Partnership a tasso zero con e-commerce ed esercenti convenzionati.</td></tr></tbody></table></div>
+<hr>
+<h2 id="codice-principale-core-logic">💻 Codice Principale (Core Logic)</h2>
+<div class="code-block" data-lang="python"><pre><code>import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from sklearn.metrics import silhouette_score
+
+# 1. Imputazione Valori Mancanti e Trasformazione Logaritmica
+df[&#x27;MINIMUM_PAYMENTS&#x27;] = df[&#x27;MINIMUM_PAYMENTS&#x27;].fillna(df[&#x27;MINIMUM_PAYMENTS&#x27;].median())
+df[&#x27;CREDIT_LIMIT&#x27;] = df[&#x27;CREDIT_LIMIT&#x27;].fillna(df[&#x27;CREDIT_LIMIT&#x27;].median())
+
+df_model = df.drop(columns=[&#x27;CUST_ID&#x27;])
+colonne_monetarie = [&#x27;BALANCE&#x27;, &#x27;PURCHASES&#x27;, &#x27;CASH_ADVANCE&#x27;, &#x27;CREDIT_LIMIT&#x27;,
+                     &#x27;PAYMENTS&#x27;, &#x27;MINIMUM_PAYMENTS&#x27;, &#x27;ONEOFF_PURCHASES&#x27;, &#x27;INSTALLMENTS_PURCHASES&#x27;]
+
+for col in colonne_monetarie:
+    df_model[col] = np.log1p(df_model[col])
+
+# 2. Standardizzazione delle Feature
+scaler = StandardScaler()
+df_scaled = scaler.fit_transform(df_model)
+
+# 3. Clustering K-Means con k=4
+final_k = 4
+kmeans_final = KMeans(n_clusters=final_k, init=&#x27;k-means++&#x27;, n_init=10, random_state=42)
+clusters = kmeans_final.fit_predict(df_scaled)
+df[&#x27;Cluster&#x27;] = clusters
+
+# 4. Riduzione Dimensionale per Visualizzazione 2D
+pca = PCA(n_components=2)
+pca_data = pca.fit_transform(df_scaled)</code></pre></div>
+<hr>
+<h2 id="competenze-tecniche-utilizzate">🧰 Competenze Tecniche Utilizzate</h2>
+<ul>
+<li><strong>Unsupervised Machine Learning:</strong> K-Means Clustering, Elbow Method, Silhouette Score.
+</li>
+<li><strong>Dimensionality Reduction:</strong> Principal Component Analysis (PCA) per proiezioni vettoriali 2D.
+</li>
+<li><strong>Data Preprocessing &amp; Cleaning:</strong> imputazione della mediana, log transformation per correzione della skewness, feature scaling (<code>StandardScaler</code>).
+</li>
+<li><strong>Exploratory Data Analysis:</strong> istogrammi distributivi, heatmap di correlazione con Seaborn/Matplotlib.
+</li>
+</ul>
+<hr>
+<h2 id="come-eseguire-il-progetto">🚀 Come Eseguire il Progetto</h2>
+<ol>
+<li>Clona la repository o scarica la cartella del progetto.
+</li>
+<li>Apri il notebook <code>Credit_Card_Customer_Segmentation.ipynb</code> su Google Colab o Jupyter Notebook.
+</li>
+<li>Esegui le celle per riprodurre le analisi di EDA, la validazione di Silhouette/Elbow e la profilazione dei cluster.
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="behavioral-feature-store.html"><span>Progetto precedente</span><b>Behavioral Feature Store</b></a><a class="pager next" href="powerbi-techmarket.html"><span>Progetto successivo</span><b>TechMarket Sales &amp; Returns Analytics</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

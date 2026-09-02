@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Behavioral Feature Store — Alessandro Gravagna</title>
+<meta name="description" content="Trasformazione di un database transazionale relazionale in un feature store denormalizzato: join a cascata, aggregazione condizionale e pivoting per alimentare modelli di churn prediction.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Behavioral Feature Store — Alessandro Gravagna">
+<meta property="og:description" content="Trasformazione di un database transazionale relazionale in un feature store denormalizzato: join a cascata, aggregazione condizionale e pivoting per alimentare modelli di churn prediction.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Banking</span>
+    <h1>🗄️ Behavioral Feature Store</h1>
+    <p class="lead">Feature engineering bancario in SQL puro</p>
+    <div class="chips"><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span></div>
+    <div class="head-metric"><b>1 riga per cliente</b><span>dataset ML-ready</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/03-SQL-Project" target="_blank" rel="noopener">Vedi la cartella su GitHub</a><a class="btn" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/blob/main/03-SQL-Project/Analisi_clienti_banca.sql" target="_blank" rel="noopener">Apri lo script SQL</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#architettura-del-database-relazionale-schema-er">🏛️ Architettura del Database Relazionale (Schema ER)</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#feature-ingegnerizzate">⚙️ Feature Ingegnerizzate</a><a href="#codice-sql-e-logica-di-implementazione">🛠️ Codice SQL e Logica di Implementazione</a><a href="#competenze-tecniche-sql">🧰 Competenze Tecniche SQL</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su SQL avanzato. Lo scenario di business — un istituto finanziario che vuole predire il churn dei clienti — è uno scenario simulato ideato per applicare le tecniche in un contesto realistico.</p>
+<p>L&#x27;obiettivo è la progettazione e implementazione in SQL di un <strong>Behavioral Feature Store</strong> denormalizzato (<code>feature_clienti</code>), che trasforma il database transazionale relazionale della banca in un dataset analitico a riga singola per cliente, pronto per alimentare modelli di Machine Learning supervisionato (predizione del churn rate, propensione d&#x27;acquisto, rilevamento anomalie).</p>
+<p><strong>Dataset:</strong> Fornito dal materiale didattico del Master in Data Analytics di ProfessionAI.</p>
+<hr>
+<h2 id="architettura-del-database-relazionale-schema-er">🏛️ Architettura del Database Relazionale (Schema ER)</h2>
+<div class="code-block" data-lang="text"><pre><code>┌─────────────┐       ┌─────────────┐       ┌─────────────────┐
+│   CLIENTE   │───1:N─│    CONTO    │───N:1─│   TIPO_CONTO    │
+└─────────────┘       └─────────────┘       └─────────────────┘
+                             │
+                            1:N
+                             │
+                      ┌─────────────┐       ┌─────────────────┐
+                      │ TRANSAZIONI │───N:1─│ TIPO_TRANSAZIONE│
+                      └─────────────┘       └─────────────────┘</code></pre></div>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Dataset ready-to-use per Machine Learning:</strong> trasformazione di un database transazionale complesso in una matrice di feature denormalizzata, utilizzabile per modelli predittivi di churn reduction, credit risk e fraud detection.
+</li>
+<li><strong>Segmentazione &amp; behavioral analytics:</strong> estrazione di pattern di spesa (volumi uscite/entrate e distribuzione del portafoglio) utili per campagne di marketing mirate.
+</li>
+<li><strong>Integrità dei dati &amp; coerenza contabile:</strong> architettura basata su LEFT JOIN a cascata e funzioni aggregate condizionali per evitare la perdita di informazioni sui clienti silenti o privi di transazioni.
+</li>
+</ul>
+<hr>
+<h2 id="feature-ingegnerizzate">⚙️ Feature Ingegnerizzate</h2>
+<p>Per ciascun <code>id_cliente</code> sono stati calcolati in modo dinamico i seguenti indicatori comportamentali:</p>
+<ul>
+<li><strong>Indicatori demografici:</strong> <code>eta_cliente</code> (calcolata dinamicamente).
+</li>
+<li><strong>Indicatori transazionali totali:</strong> volume e frequenza di transazioni in entrata (+) e in uscita (-).
+</li>
+<li><strong>Indicatori di portafoglio:</strong> conteggio univoco dei conti posseduti e segmentazione per categoria (Base, Business, Privati, Famiglie).
+</li>
+<li><strong>Matrix features (pivoting):</strong> scomposizione incrociata di volumi monetari e numero di movimenti per ogni combinazione di conto ed entrata/uscita.
+</li>
+</ul>
+<hr>
+<h2 id="codice-sql-e-logica-di-implementazione">🛠️ Codice SQL e Logica di Implementazione</h2>
+<div class="code-block" data-lang="sql"><pre><code>-- Creazione della Tabella/Feature Store Denormalizzato
+CREATE TABLE feature_clienti AS
+SELECT
+    c.id_cliente,
+
+    -- Feature Demografica
+    TIMESTAMPDIFF(YEAR, c.data_nascita, CURRENT_DATE) AS eta_cliente,
+
+    -- Transazioni Totali
+    SUM(CASE WHEN tt.segno = &#x27;-&#x27; THEN 1 ELSE 0 END) AS num_transazioni_uscita,
+    SUM(CASE WHEN tt.segno = &#x27;+&#x27; THEN 1 ELSE 0 END) AS num_transazioni_entrata,
+    ROUND(SUM(CASE WHEN tt.segno = &#x27;-&#x27; THEN t.importo ELSE 0 END), 2) AS importo_tot_uscita,
+    ROUND(SUM(CASE WHEN tt.segno = &#x27;+&#x27; THEN t.importo ELSE 0 END), 2) AS importo_tot_entrata,
+
+    -- Portafoglio Conti
+    COUNT(DISTINCT co.id_conto) AS num_totale_conti,
+    COUNT(DISTINCT CASE WHEN tc.desc_tipo_conto = &#x27;Conto Base&#x27; THEN co.id_conto END) AS num_conti_base,
+    COUNT(DISTINCT CASE WHEN tc.desc_tipo_conto = &#x27;Conto Business&#x27; THEN co.id_conto END) AS num_conti_business,
+    COUNT(DISTINCT CASE WHEN tc.desc_tipo_conto = &#x27;Conto Privati&#x27; THEN co.id_conto END) AS num_conti_privati,
+    COUNT(DISTINCT CASE WHEN tc.desc_tipo_conto = &#x27;Conto Famiglie&#x27; THEN co.id_conto END) AS num_conti_famiglie,
+
+    -- Feature Pivotate per Categoria Conto (Esempio: Conto Base)
+    SUM(CASE WHEN tc.desc_tipo_conto = &#x27;Conto Base&#x27; AND tt.segno = &#x27;-&#x27; THEN 1 ELSE 0 END) AS num_trans_uscita_base,
+    SUM(CASE WHEN tc.desc_tipo_conto = &#x27;Conto Base&#x27; AND tt.segno = &#x27;+&#x27; THEN 1 ELSE 0 END) AS num_trans_entrata_base,
+    ROUND(SUM(CASE WHEN tc.desc_tipo_conto = &#x27;Conto Base&#x27; AND tt.segno = &#x27;-&#x27; THEN t.importo ELSE 0 END), 2) AS importo_uscita_base,
+    ROUND(SUM(CASE WHEN tc.desc_tipo_conto = &#x27;Conto Base&#x27; AND tt.segno = &#x27;+&#x27; THEN t.importo ELSE 0 END), 2) AS importo_entrata_base,
+
+    -- Feature Pivotate (Esempio: Conto Famiglie)
+    ROUND(SUM(CASE WHEN tc.desc_tipo_conto = &#x27;Conto Famiglie&#x27; AND tt.segno = &#x27;+&#x27; THEN t.importo ELSE 0 END), 2) AS importo_entrata_famiglie
+
+FROM cliente c
+LEFT JOIN conto co ON c.id_cliente = co.id_cliente
+LEFT JOIN tipo_conto tc ON co.id_tipo_conto = tc.id_tipo_conto
+LEFT JOIN transazioni t ON co.id_conto = t.id_conto
+LEFT JOIN tipo_transazione tt ON t.id_tipo_trans = tt.id_tipo_transazione
+GROUP BY c.id_cliente, c.data_nascita;</code></pre></div>
+<hr>
+<h2 id="competenze-tecniche-sql">🧰 Competenze Tecniche SQL</h2>
+<ul>
+<li><strong>DDL &amp; DML Advanced:</strong> <code>CREATE TABLE ... AS SELECT</code> per la persistenza dei dati aggregati.
+</li>
+<li><strong>Conditional Aggregation &amp; Pivoting:</strong> utilizzo avanzato di <code>SUM(CASE WHEN ...)</code> e <code>COUNT(DISTINCT ...)</code>.
+</li>
+<li><strong>Multi-Table Joins:</strong> relazioni a cascata tramite <code>LEFT JOIN</code> per preservare l&#x27;integrità del campione.
+</li>
+<li><strong>Date &amp; Math Functions:</strong> <code>TIMESTAMPDIFF()</code>, <code>CURRENT_DATE</code>, <code>ROUND()</code>.
+</li>
+</ul>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager next" href="credit-card-segmentation.html"><span>Progetto successivo</span><b>Credit Card Customer Segmentation</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

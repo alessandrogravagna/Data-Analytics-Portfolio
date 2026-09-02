@@ -1,1 +1,5 @@
 *.csv
+
+# Config locale degli strumenti di sviluppo
+.claude/
+.DS_Store

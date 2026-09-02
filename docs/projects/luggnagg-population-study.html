@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luggnagg Population Study — Alessandro Gravagna</title>
+<meta name="description" content="Generazione di un campione sintetico su distribuzione normale, campionamento condizionale, intervalli di confidenza, matrice di correlazione e modello di regressione con estrapolazione predittiva.">
+<meta name="author" content="Alessandro Gravagna">
+<meta property="og:title" content="Luggnagg Population Study — Alessandro Gravagna">
+<meta property="og:description" content="Generazione di un campione sintetico su distribuzione normale, campionamento condizionale, intervalli di confidenza, matrice di correlazione e modello di regressione con estrapolazione predittiva.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/">
+<meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body class="project">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">AG</span>
+      <span class="brand-text">Alessandro Gravagna<small>Junior Data Analyst</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#stack">Stack</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="project-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#progetti"><span aria-hidden="true">&larr;</span> Tutti i progetti</a>
+    <span class="domain">Statistics</span>
+    <h1>📈 Luggnagg Population Study</h1>
+    <p class="lead">Simulazione demografica e regressione lineare</p>
+    <div class="chips"><span class="chip">Excel</span><span class="chip">Statistica</span><span class="chip">Regressione</span></div>
+    <div class="head-metric"><b>250</b><span>individui simulati</span></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio/tree/main/01-Excel-Projects/03-Statistical-Simulation" target="_blank" rel="noopener">Vedi la cartella su GitHub</a></div>
+  </div>
+</section>
+<div class="wrap project-layout">
+  <aside class="toc"><p class="toc-title">In questa pagina</p><nav><a href="#panoramica-del-progetto">📌 Panoramica del Progetto</a><a href="#scatterplot-regression-preview">📊 Scatterplot &amp; Regression Preview</a><a href="#cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</a><a href="#architettura-del-modello-excel">🛠️ Architettura del Modello Excel</a></nav></aside>
+  <article class="prose">
+<h2 id="panoramica-del-progetto">📌 Panoramica del Progetto</h2>
+<p>Progetto realizzato durante il <strong>Master in Data Analytics di ProfessionAI</strong>, come capstone del modulo su statistica e modellazione predittiva in Excel. <em>Luggnagg</em> è una popolazione fittizia (il nome è un omaggio ai Viaggi di Gulliver di Swift), usata come scenario per simulare un&#x27;analisi demografica in assenza di dati storici reali.</p>
+<p>Il progetto simula un campione di 250 individui applicando tecniche di generazione di distribuzioni normali, campionamento condizionale, analisi di correlazione e modellazione tramite regressione lineare, per testare scenari e guidare decisioni strategiche in ambito aziendale.</p>
+<hr>
+<h2 id="scatterplot-regression-preview">📊 Scatterplot &amp; Regression Preview</h2>
+<p><img src="../assets/img/luggnagg-population-study-luggnagg_regression_preview.png" alt="Regression Preview" loading="lazy"> <em>(Figura 1: Modello di regressione lineare con scatterplot, equazione della retta ed estrapolazione predittiva)</em></p>
+<hr>
+<h2 id="cosa-dimostra-questo-progetto">💡 Cosa dimostra questo progetto</h2>
+<ul>
+<li><strong>Simulazione di scenari &amp; risk management:</strong> creazione di ambienti sintetici sicuri per testare ipotesi di mercato e modelli predittivi senza sostenere costi di raccolta dati.
+</li>
+<li><strong>Campionamento e segmentazione:</strong> isolamento di sotto-campioni specifici per stime parametriche di confidenza e analisi di gruppo.
+</li>
+<li><strong>Analisi relazionale e predittiva:</strong> valutazione delle relazioni causa-effetto tra variabili e costruzione di modelli di regressione lineare per identificare trend futuri.
+</li>
+</ul>
+<hr>
+<h2 id="architettura-del-modello-excel">🛠️ Architettura del Modello Excel</h2>
+<p>Il file è strutturato su 6 tab specializzati:</p>
+<ol>
+<li><strong><code>Parameters</code></strong>: interfaccia per l&#x27;impostazione dei parametri probabilistici di input (media, deviazione standard).
+</li>
+<li><strong><code>Data</code></strong>: generazione stocastica dell&#x27;età (distribuzione normale su 250 individui) e assegnazione casuale a 4 gruppi.
+</li>
+<li><strong><code>Sample</code></strong>: estrazione dinamica e filtraggio condizionale del sotto-campione tramite funzioni logiche (<code>IF</code> / <code>SE</code>).
+</li>
+<li><strong><code>Statistical Insight</code></strong>: calcolo di indicatori statistici, dimensione campionaria, tasso e intervallo di confidenza.
+</li>
+<li><strong><code>(Un)correlated Variables</code></strong>: elaborazione della matrice di correlazione tra l&#x27;età e variabili indipendenti.
+</li>
+<li><strong><code>Linear Regression</code></strong>: modellazione di regressione lineare con scatterplot, equazione della retta ed estrapolazione predittiva.
+</li>
+</ol>
+  </article>
+</div>
+<div class="wrap pager-row"><a class="pager prev" href="retail-sales-reporting.html"><span>Progetto precedente</span><b>Retail Sales Analysis</b></a></div>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Alessandro Gravagna</strong><br>
+      <span class="muted">Junior Data Analyst &middot; Monza (MB), Italia</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/alessandro-gravagna-3a3050201/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alegrava8@gmail.com">alegrava8@gmail.com</a>
+      <a href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

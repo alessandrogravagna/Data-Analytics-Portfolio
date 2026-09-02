@@ -1,0 +1,47 @@
+name: Rigenera il sito
+
+# Ogni volta che cambia un README (o il generatore), ricostruisce docs/
+# e committa il risultato, cosi' il sito su GitHub Pages resta sempre
+# allineato ai contenuti del repository.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/README.md"
+      - "site/**"
+      - "**/images/**"
+      - ".github/workflows/build-site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Genera il sito
+        run: python3 site/build.py
+
+      - name: Committa docs/ se e' cambiato
+        run: |
+          if [ -n "$(git status --porcelain docs)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs
+            git commit -m "chore: rigenera il sito da README"
+            git push
+          else
+            echo "Nessuna modifica al sito."
+          fi
