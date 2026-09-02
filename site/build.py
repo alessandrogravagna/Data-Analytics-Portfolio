@@ -544,6 +544,8 @@ ARTIFACTS = (
     (".ipynb", "Apri il notebook", gh_blob),
     (".sql", "Apri lo script SQL", gh_blob),
     (".pbix", "Scarica il file .pbix", gh_raw),
+    (".xlsx", "Scarica il file Excel", gh_raw),
+    (".xlsm", "Scarica il file Excel", gh_raw),
 )
 
 

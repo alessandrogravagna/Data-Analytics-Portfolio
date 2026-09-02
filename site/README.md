@@ -68,5 +68,18 @@ Poi apri <http://localhost:4321>.
 
 3. Rilancia `python3 site/build.py`.
 
-Il file principale del progetto (`.ipynb`, `.sql` o `.pbix`) viene individuato da
-solo e linkato in cima alla pagina.
+Il file principale del progetto viene individuato da solo e linkato in cima alla
+pagina: basta che stia nella cartella del progetto. Le estensioni riconosciute
+sono elencate in `ARTIFACTS` dentro `build.py`.
+
+| Estensione | Pulsante | Comportamento |
+| :--- | :--- | :--- |
+| `.ipynb` | Apri il notebook | Apre la pagina di GitHub, che mostra il notebook con grafici e output |
+| `.sql` | Apri lo script SQL | Apre la pagina di GitHub, che mostra il codice |
+| `.pbix` | Scarica il file .pbix | Scarica il file: GitHub non sa visualizzarlo |
+| `.xlsx` / `.xlsm` | Scarica il file Excel | Scarica il file: GitHub non sa visualizzarlo |
+
+Per aggiungere un formato basta una riga in `ARTIFACTS`. La regola: se GitHub sa
+mostrare il contenuto usa `gh_blob`, altrimenti `gh_raw`, che scarica il file —
+un link alla pagina di un file binario apre una schermata vuota e sembra che il
+file non esista.

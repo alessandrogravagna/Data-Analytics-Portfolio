@@ -7,11 +7,13 @@ name: Rigenera il sito
 on:
   push:
     branches: [main]
-    paths:
-      - "**/README.md"
-      - "site/**"
-      - "**/images/**"
-      - ".github/workflows/build-site.yml"
+    # Qualunque modifica alle sorgenti fa ripartire la generazione: un elenco
+    # di percorsi andrebbe aggiornato ogni volta che si aggiunge un tipo di
+    # file nuovo (un .xlsx, un'immagine, un notebook) e ci si dimenticherebbe.
+    # Si ignora solo docs/, che e' l'output: cosi' il commit fatto da questa
+    # stessa Action non la fa ripartire all'infinito.
+    paths-ignore:
+      - "docs/**"
   workflow_dispatch:
 
 permissions:
