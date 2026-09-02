@@ -30,7 +30,6 @@ LINKEDIN = "https://www.linkedin.com/in/alessandro-gravagna-3a3050201/"
 EMAIL = "alegrava8@gmail.com"
 
 AUTHOR = "Alessandro Gravagna"
-ROLE = "Junior Data Analyst"
 PLACE = "Monza (MB)"
 
 # --------------------------------------------------------------------------
@@ -606,7 +605,7 @@ def page(title, description, body, depth=0, extra_head="", body_class=""):
 </body>
 </html>
 """.format(title=html.escape(title), description=html.escape(description, quote=True),
-           author=AUTHOR, role=ROLE, place=PLACE, base=base, repo=REPO_URL,
+           author=AUTHOR, place=PLACE, base=base, repo=REPO_URL,
            site_url=SITE_URL, og_image=OG_IMAGE,
            linkedin=LINKEDIN, email=EMAIL, body=body, extra_head=extra_head,
            body_class=body_class)
@@ -749,8 +748,8 @@ def build_index():
            n_python=n_python, n_bi=n_bi, n_excel=n_excel, linkedin=LINKEDIN, email=EMAIL,
            filters=filters, cards=cards, stack=stack, repo=REPO_URL)
 
-    description = ("Portfolio di %s, %s: %d progetti end-to-end su SQL, Python, Machine Learning, "
-                   "NLP, PySpark, Power BI, Tableau ed Excel." % (AUTHOR, ROLE, len(PROJECTS)))
+    description = ("Portfolio di %s: %d progetti end-to-end su SQL, Python, Machine Learning, "
+                   "NLP, PySpark, Power BI, Tableau ed Excel." % (AUTHOR, len(PROJECTS)))
     return page("%s \u2014 Data Analytics Portfolio" % AUTHOR, description, body,
                 depth=0, body_class="home")
 
