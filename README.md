@@ -69,4 +69,4 @@ Le pagine del sito sono generate automaticamente da questi stessi README: il cod
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia
