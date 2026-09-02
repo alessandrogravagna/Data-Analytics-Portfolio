@@ -546,6 +546,68 @@ def main_artifact(rel_dir):
 # Template HTML
 # --------------------------------------------------------------------------
 
+# --------------------------------------------------------------------------
+# Tema chiaro / scuro
+# --------------------------------------------------------------------------
+
+# Va eseguito nell'<head>, prima che la pagina venga disegnata: cosi' chi ha
+# gia' scelto un tema non vede il lampo del tema sbagliato al caricamento.
+THEME_INIT = """<script>
+(function () {
+  try {
+    var t = localStorage.getItem('tema');
+    if (t === 'light' || t === 'dark') {
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  } catch (e) { /* localStorage non disponibile: si usa il tema di sistema */ }
+})();
+</script>"""
+
+# Senza scelta salvata si segue il sistema operativo; il primo clic decide.
+THEME_BUTTON = """<button class="theme-toggle" type="button" id="theme-toggle"
+        aria-label="Cambia tema chiaro o scuro" title="Cambia tema chiaro o scuro">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.4v2.6M12 19v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M2.4 12h2.6M19 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/>
+        </svg>
+      </button>"""
+
+THEME_SCRIPT = """<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  var scuroDiSistema = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function temaAttuale() {
+    return root.getAttribute('data-theme') || (scuroDiSistema.matches ? 'dark' : 'light');
+  }
+  function aggiornaEtichetta() {
+    var prossimo = temaAttuale() === 'dark' ? 'chiaro' : 'scuro';
+    btn.setAttribute('aria-label', 'Passa al tema ' + prossimo);
+    btn.setAttribute('title', 'Passa al tema ' + prossimo);
+  }
+
+  btn.addEventListener('click', function () {
+    var nuovo = temaAttuale() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', nuovo);
+    try { localStorage.setItem('tema', nuovo); } catch (e) {}
+    aggiornaEtichetta();
+  });
+
+  // Se non c'e' una scelta esplicita, si segue il sistema anche a caldo.
+  scuroDiSistema.addEventListener('change', function () {
+    if (!root.hasAttribute('data-theme')) aggiornaEtichetta();
+  });
+
+  aggiornaEtichetta();
+})();
+</script>"""
+
+
 def page(title, description, body, depth=0, extra_head="", body_class=""):
     base = "../" * depth
     return """<!DOCTYPE html>
@@ -563,11 +625,13 @@ def page(title, description, body, depth=0, extra_head="", body_class=""):
 <meta property="og:image" content="{og_image}">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="dark light">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{base}assets/style.css">
+{theme_init}
 {extra_head}
 </head>
 <body class="{body_class}">
@@ -583,6 +647,7 @@ def page(title, description, body, depth=0, extra_head="", body_class=""):
       <a href="{base}index.html#stack">Stack</a>
       <a href="{base}index.html#contatti">Contatti</a>
       <a class="btn btn-ghost" href="{repo}" target="_blank" rel="noopener">GitHub</a>
+      {theme_button}
     </nav>
   </div>
 </header>
@@ -602,11 +667,13 @@ def page(title, description, body, depth=0, extra_head="", body_class=""):
     </div>
   </div>
 </footer>
+{theme_script}
 </body>
 </html>
 """.format(title=html.escape(title), description=html.escape(description, quote=True),
            author=AUTHOR, place=PLACE, base=base, repo=REPO_URL,
            site_url=SITE_URL, og_image=OG_IMAGE,
+           theme_init=THEME_INIT, theme_button=THEME_BUTTON, theme_script=THEME_SCRIPT,
            linkedin=LINKEDIN, email=EMAIL, body=body, extra_head=extra_head,
            body_class=body_class)
 

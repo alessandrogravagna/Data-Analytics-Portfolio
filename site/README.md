@@ -23,6 +23,18 @@ commit di `docs/`.
 > comunque la GitHub Action `.github/workflows/build-site.yml`: rigenera `docs/`
 > e committa il risultato automaticamente.
 
+## Tema chiaro e scuro
+
+Il pulsante in alto a destra alterna i due temi. Senza una scelta esplicita il
+sito segue l'impostazione del sistema operativo; al primo clic la preferenza
+viene salvata nel browser (`localStorage`, chiave `tema`) e vale per tutte le
+pagine.
+
+I colori sono definiti una volta sola come variabili CSS in `style.css`: il tema
+scuro sta su `:root`, quello chiaro ridefinisce **solo** i colori in due blocchi
+gemelli (`@media (prefers-color-scheme: light)` e `:root[data-theme="light"]`).
+Per cambiare un colore basta quindi toccare le variabili, non le singole regole.
+
 ## Vedere il sito in locale
 
 ```bash

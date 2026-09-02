@@ -13,11 +13,22 @@
 <meta property="og:image" content="https://alessandrogravagna.github.io/Data-Analytics-Portfolio/assets/img/powerbi-techmarket-powerbi_dashboard_preview.png">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="dark light">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128202;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('tema');
+    if (t === 'light' || t === 'dark') {
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  } catch (e) { /* localStorage non disponibile: si usa il tema di sistema */ }
+})();
+</script>
 
 </head>
 <body class="home">
@@ -33,6 +44,16 @@
       <a href="index.html#stack">Stack</a>
       <a href="index.html#contatti">Contatti</a>
       <a class="btn btn-ghost" href="https://github.com/alessandrogravagna/Data-Analytics-Portfolio" target="_blank" rel="noopener">GitHub</a>
+      <button class="theme-toggle" type="button" id="theme-toggle"
+        aria-label="Cambia tema chiaro o scuro" title="Cambia tema chiaro o scuro">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.4v2.6M12 19v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M2.4 12h2.6M19 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/>
+        </svg>
+      </button>
     </nav>
   </div>
 </header>
@@ -292,5 +313,36 @@
     </div>
   </div>
 </footer>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  var scuroDiSistema = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function temaAttuale() {
+    return root.getAttribute('data-theme') || (scuroDiSistema.matches ? 'dark' : 'light');
+  }
+  function aggiornaEtichetta() {
+    var prossimo = temaAttuale() === 'dark' ? 'chiaro' : 'scuro';
+    btn.setAttribute('aria-label', 'Passa al tema ' + prossimo);
+    btn.setAttribute('title', 'Passa al tema ' + prossimo);
+  }
+
+  btn.addEventListener('click', function () {
+    var nuovo = temaAttuale() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', nuovo);
+    try { localStorage.setItem('tema', nuovo); } catch (e) {}
+    aggiornaEtichetta();
+  });
+
+  // Se non c'e' una scelta esplicita, si segue il sistema anche a caldo.
+  scuroDiSistema.addEventListener('change', function () {
+    if (!root.hasAttribute('data-theme')) aggiornaEtichetta();
+  });
+
+  aggiornaEtichetta();
+})();
+</script>
 </body>
 </html>
