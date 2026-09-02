@@ -227,7 +227,7 @@ INTRO = (
 )
 INTRO2 = (
     "Quella parte del lavoro \u2014 raccogliere dati, pulirli e trasformare numeri in decisioni "
-    "\u2014 \u00e8 diventata la mia passione, da cui la scelta di specializzarmi con un master in "
+    "\u2014 \u00e8 diventata la mia passione, da qui la scelta di specializzarmi con un master in "
     "Data Analytics (ProfessionAI). Raccolgo qui i progetti pratici svolti durante il percorso."
 )
 
