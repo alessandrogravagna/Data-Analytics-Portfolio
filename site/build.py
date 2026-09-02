@@ -714,8 +714,8 @@ def build_index():
 <section class="section" id="contatti">
   <div class="wrap contact">
     <h2>Parliamone</h2>
-    <p class="lead">Cerco un ruolo in ambito Data (Data Analyst, Data Engineer, BI Specialist), anche
-    come stage o apprendistato, con la possibilit&agrave; di crescere e specializzarmi nel tempo.</p>
+    <p class="lead">Cerco un ruolo in ambito Data (Data Analyst, Data Engineer, BI Specialist),
+    con la possibilit&agrave; di crescere e specializzarmi nel tempo.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="mailto:{email}">{email}</a>
       <a class="btn" href="{linkedin}" target="_blank" rel="noopener">Profilo LinkedIn</a>

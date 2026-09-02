@@ -36,4 +36,4 @@ Il modello è organizzato nei seguenti tab:
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

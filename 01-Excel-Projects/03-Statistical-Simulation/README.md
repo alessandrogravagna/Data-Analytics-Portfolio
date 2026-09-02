@@ -37,4 +37,4 @@ Il file è strutturato su 6 tab specializzati:
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

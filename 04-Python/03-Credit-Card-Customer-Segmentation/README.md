@@ -103,4 +103,4 @@ pca_data = pca.fit_transform(df_scaled)
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

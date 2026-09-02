@@ -50,4 +50,4 @@ Il report integra le transazioni di vendita del 2014, i dati anagrafici dei punt
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

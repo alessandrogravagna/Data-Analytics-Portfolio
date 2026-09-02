@@ -42,4 +42,4 @@ Progetto realizzato durante il **Master in Data Analytics di ProfessionAI**, com
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

@@ -34,4 +34,4 @@ Il file si articola in 3 tab principali:
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

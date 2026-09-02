@@ -109,4 +109,4 @@ with open('tfidf_vectorizer.pkl', 'wb') as f:
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

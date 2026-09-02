@@ -100,4 +100,4 @@ CLASSIFICA PILOTI 2008
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

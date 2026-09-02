@@ -101,4 +101,4 @@ GROUP BY c.id_cliente, c.data_nascita;
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

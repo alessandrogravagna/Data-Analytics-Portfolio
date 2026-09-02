@@ -100,4 +100,4 @@ corr_negativi = df_output_correlazione.stat.corr("tweet_negativi", "Close")
 
 ## 👤 Autore
 **Alessandro Gravagna**
-*Junior Data Analyst* | Monza (MB), Italia
+Monza (MB), Italia

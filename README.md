@@ -10,7 +10,7 @@ Quella parte del lavoro — raccogliere dati, pulirli e trasformare numeri in de
 
 **11 progetti end-to-end** su SQL, Python (Machine Learning, NLP, Big Data), Power BI, Tableau ed Excel; dalla feature engineering bancaria alla classificazione NLP per il rilevamento di disinformazione, dal clustering clienti alla sentiment analysis su larga scala con PySpark.
 
-🟢 **Vorrei mettermi in gioco in un ruolo in ambito Data** (Data Analyst, Data Engineer, BI Specialist), anche attraverso stage o apprendistato, con la possibilità di crescere e specializzarmi nel tempo.
+🟢 **Vorrei mettermi in gioco in un ruolo in ambito Data** (Data Analyst, Data Engineer, BI Specialist), con la possibilità di crescere e specializzarmi nel tempo.
 
 📫 **Contatti:** [LinkedIn](https://www.linkedin.com/in/alessandro-gravagna-3a3050201/) | ✉️ alegrava8@gmail.com
 
