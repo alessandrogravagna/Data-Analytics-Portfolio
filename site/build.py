@@ -528,17 +528,32 @@ def gh_tree(rel_dir):
 
 
 def gh_blob(rel_path):
+    """Pagina di GitHub che mostra il contenuto del file."""
     return "%s/blob/main/%s" % (REPO_URL, quote(rel_path))
+
+
+def gh_raw(rel_path):
+    """URL che scarica il file invece di aprirne la pagina."""
+    return "%s/raw/main/%s" % (REPO_URL, quote(rel_path))
+
+
+# Per notebook e script la pagina di GitHub e' utile: mostra il contenuto.
+# Un .pbix invece GitHub non sa visualizzarlo, e la sua pagina sembra vuota:
+# per quel formato serve il link che scarica direttamente il file.
+ARTIFACTS = (
+    (".ipynb", "Apri il notebook", gh_blob),
+    (".sql", "Apri lo script SQL", gh_blob),
+    (".pbix", "Scarica il file .pbix", gh_raw),
+)
 
 
 def main_artifact(rel_dir):
     """Individua il file principale del progetto (notebook, script SQL, report Power BI)."""
     abs_dir = os.path.join(ROOT, rel_dir)
-    for ext, label in ((".ipynb", "Apri il notebook"), (".sql", "Apri lo script SQL"),
-                       (".pbix", "Scarica il file .pbix")):
+    for ext, label, url_for in ARTIFACTS:
         for f in sorted(os.listdir(abs_dir)):
             if f.endswith(ext):
-                return label, gh_blob(os.path.join(rel_dir, f))
+                return label, url_for(os.path.join(rel_dir, f))
     return None
 
 
