@@ -6,7 +6,7 @@
 
 Il mio percorso nella Data Analytics parte da un luogo diverso dal solito: il campo da pallavolo. Per 6 anni ho lavorato come allenatore e scoutman in settori giovanili di alto livello (Vero Volley Monza, PowerVolley Milano), raccogliendo dati in tempo reale e costruendo fogli gara in Excel per l'analisi post-partita e lo studio degli avversari. La curiosità andava oltre il richiesto: ogni weekend studiavo per interesse personale gli scout di tutte le partite pubblicati dalla Lega Serie A Volley.
 
-Quella parte del lavoro — raccogliere dati, pulirli e trasformare numeri in decisioni — è diventata la mia passione, da cui la scelta di specializzarmi con un master in Data Analytics (ProfessionAI). Raccolgo qui i progetti pratici svolti durante il percorso.
+Quella parte del lavoro — raccogliere dati, pulirli e trasformare numeri in decisioni — è diventata la mia passione, da qui la scelta di specializzarmi con un master in Data Analytics (ProfessionAI). Raccolgo qui i progetti pratici svolti durante il percorso.
 
 **11 progetti end-to-end** su SQL, Python (Machine Learning, NLP, Big Data), Power BI, Tableau ed Excel; dalla feature engineering bancaria alla classificazione NLP per il rilevamento di disinformazione, dal clustering clienti alla sentiment analysis su larga scala con PySpark.
 
